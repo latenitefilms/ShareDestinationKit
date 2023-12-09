@@ -10,7 +10,7 @@ You can learn more about Custom Share Destinations on [Apple's Developer Site](h
 
 Here's an example ChatGPT Prompt:
 
-```
+``````
 I am writing a Swift application on Mac.
 
 The application receives Media and Data Through a Final Cut Pro Custom Share Destination.
@@ -885,4 +885,4 @@ Please read the "Responding to Apple Events from Final Cut Pro" section carefull
 Please make sure the Swift code is for Mac, and is clean, logical, documented and uses `NSLog` to verbosely note what's happening.
 
 Please just supply the new, complete code, with no explanation or commentary required.
-```
+``````
