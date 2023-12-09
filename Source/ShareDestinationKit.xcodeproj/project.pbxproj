@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220057E42B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220057E32B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSampleApp.swift */; };
+		220057E42B2506AD00B69E8A /* ShareDestinationKitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220057E32B2506AD00B69E8A /* ShareDestinationKitApp.swift */; };
 		220057E82B2506AE00B69E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220057E72B2506AE00B69E8A /* Assets.xcassets */; };
 		220057EB2B2506AE00B69E8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220057EA2B2506AE00B69E8A /* Preview Assets.xcassets */; };
 		220057F42B25094E00B69E8A /* OSAScriptingDefinition.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 220057F32B25094E00B69E8A /* OSAScriptingDefinition.sdef */; };
+		220057F82B25259B00B69E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220057F72B25259B00B69E8A /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		220057E02B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FCPCustomShareDestinationSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		220057E32B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPCustomShareDestinationSwiftSampleApp.swift; sourceTree = "<group>"; };
+		220057E02B2506AD00B69E8A /* ShareDestinationKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareDestinationKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		220057E32B2506AD00B69E8A /* ShareDestinationKitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDestinationKitApp.swift; sourceTree = "<group>"; };
 		220057E72B2506AE00B69E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		220057EA2B2506AE00B69E8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		220057EC2B2506AE00B69E8A /* FCPCustomShareDestinationSwiftSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FCPCustomShareDestinationSwiftSample.entitlements; sourceTree = "<group>"; };
+		220057EC2B2506AE00B69E8A /* ShareDestinationKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareDestinationKit.entitlements; sourceTree = "<group>"; };
 		220057F22B2508E200B69E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		220057F32B25094E00B69E8A /* OSAScriptingDefinition.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OSAScriptingDefinition.sdef; sourceTree = "<group>"; };
+		220057F72B25259B00B69E8A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +39,7 @@
 		220057D72B2506AD00B69E8A = {
 			isa = PBXGroup;
 			children = (
-				220057E22B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample */,
+				220057E22B2506AD00B69E8A /* ShareDestinationKit */,
 				220057E12B2506AD00B69E8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,19 +47,19 @@
 		220057E12B2506AD00B69E8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				220057E02B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample.app */,
+				220057E02B2506AD00B69E8A /* ShareDestinationKit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		220057E22B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample */ = {
+		220057E22B2506AD00B69E8A /* ShareDestinationKit */ = {
 			isa = PBXGroup;
 			children = (
 				220057F52B25095600B69E8A /* Code */,
 				220057F62B25096500B69E8A /* Resources */,
 				220057E92B2506AE00B69E8A /* Preview Content */,
 			);
-			path = FCPCustomShareDestinationSwiftSample;
+			path = ShareDestinationKit;
 			sourceTree = "<group>";
 		};
 		220057E92B2506AE00B69E8A /* Preview Content */ = {
@@ -71,7 +73,8 @@
 		220057F52B25095600B69E8A /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				220057E32B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSampleApp.swift */,
+				220057E32B2506AD00B69E8A /* ShareDestinationKitApp.swift */,
+				220057F72B25259B00B69E8A /* AppDelegate.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -81,7 +84,7 @@
 			children = (
 				220057F22B2508E200B69E8A /* Info.plist */,
 				220057E72B2506AE00B69E8A /* Assets.xcassets */,
-				220057EC2B2506AE00B69E8A /* FCPCustomShareDestinationSwiftSample.entitlements */,
+				220057EC2B2506AE00B69E8A /* ShareDestinationKit.entitlements */,
 				220057F32B25094E00B69E8A /* OSAScriptingDefinition.sdef */,
 			);
 			name = Resources;
@@ -90,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		220057DF2B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample */ = {
+		220057DF2B2506AD00B69E8A /* ShareDestinationKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 220057EF2B2506AE00B69E8A /* Build configuration list for PBXNativeTarget "FCPCustomShareDestinationSwiftSample" */;
+			buildConfigurationList = 220057EF2B2506AE00B69E8A /* Build configuration list for PBXNativeTarget "ShareDestinationKit" */;
 			buildPhases = (
 				220057DC2B2506AD00B69E8A /* Sources */,
 				220057DD2B2506AD00B69E8A /* Frameworks */,
@@ -102,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = FCPCustomShareDestinationSwiftSample;
+			name = ShareDestinationKit;
 			productName = FCPCustomShareDestinationSwiftSample;
-			productReference = 220057E02B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample.app */;
+			productReference = 220057E02B2506AD00B69E8A /* ShareDestinationKit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 220057DB2B2506AD00B69E8A /* Build configuration list for PBXProject "FCPCustomShareDestinationSwiftSample" */;
+			buildConfigurationList = 220057DB2B2506AD00B69E8A /* Build configuration list for PBXProject "ShareDestinationKit" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				220057DF2B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSample */,
+				220057DF2B2506AD00B69E8A /* ShareDestinationKit */,
 			);
 		};
 /* End PBXProject section */
@@ -158,7 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				220057E42B2506AD00B69E8A /* FCPCustomShareDestinationSwiftSampleApp.swift in Sources */,
+				220057F82B25259B00B69E8A /* AppDelegate.swift in Sources */,
+				220057E42B2506AD00B69E8A /* ShareDestinationKitApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,16 +292,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FCPCustomShareDestinationSwiftSample/FCPCustomShareDestinationSwiftSample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ShareDestinationKit/ShareDestinationKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FCPCustomShareDestinationSwiftSample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ShareDestinationKit/Preview Content\"";
 				DEVELOPMENT_TEAM = A5HDJTY9X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FCPCustomShareDestinationSwiftSample/Info.plist;
+				INFOPLIST_FILE = ShareDestinationKit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Custom Share Destination Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.video";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © LateNite Films Pty Ltd 2023. All Rights Reserved.";
@@ -306,7 +310,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.latenitefilms.FCPCustomShareDestinationSwiftSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latenitefilms.ShareDestinationKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,16 +322,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FCPCustomShareDestinationSwiftSample/FCPCustomShareDestinationSwiftSample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ShareDestinationKit/ShareDestinationKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FCPCustomShareDestinationSwiftSample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ShareDestinationKit/Preview Content\"";
 				DEVELOPMENT_TEAM = A5HDJTY9X5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FCPCustomShareDestinationSwiftSample/Info.plist;
+				INFOPLIST_FILE = ShareDestinationKit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Custom Share Destination Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.video";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © LateNite Films Pty Ltd 2023. All Rights Reserved.";
@@ -336,7 +340,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.latenitefilms.FCPCustomShareDestinationSwiftSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latenitefilms.ShareDestinationKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -346,7 +350,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		220057DB2B2506AD00B69E8A /* Build configuration list for PBXProject "FCPCustomShareDestinationSwiftSample" */ = {
+		220057DB2B2506AD00B69E8A /* Build configuration list for PBXProject "ShareDestinationKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				220057ED2B2506AE00B69E8A /* Debug */,
@@ -355,7 +359,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		220057EF2B2506AE00B69E8A /* Build configuration list for PBXNativeTarget "FCPCustomShareDestinationSwiftSample" */ = {
+		220057EF2B2506AE00B69E8A /* Build configuration list for PBXNativeTarget "ShareDestinationKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				220057F02B2506AE00B69E8A /* Debug */,
