@@ -20,9 +20,6 @@
 	<key>OSAScriptingDefinition</key>
 	<string>OSAScriptingDefinition.sdef</string>
 	<key>com.apple.proapps.MediaAssetProtocol</key>
-	<dict>
-		<key>logoIcon</key>
-		<string>icon_26x26.png</string>
-	</dict>
+	<dict></dict>
 </dict>
 </plist>

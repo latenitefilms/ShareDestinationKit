@@ -11,11 +11,8 @@ import Foundation
 
 @main
 struct ShareDestinationKitApp: App {
-    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
     var appleEventHandler = AppleEventHandler()
-
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -45,76 +42,84 @@ class AppleEventHandler: NSObject {
     var assets: [String: Asset] = [:]
 
     override init() {
-        NSLog("Initializing AppleEventHandler")
+        NSLog("[ShareDestinationKit] INFO - AppleEventHandler Initialised!")
         super.init()
         setupAppleEventHandlers()
     }
 
     private func setupAppleEventHandlers() {
-        NSLog("setupAppleEventHandlers triggered")
+        NSLog("[ShareDestinationKit] INFO - Setting up Apple Event Handlers...")
         
         // Register handlers for various Apple Events
-        registerHandler(forEventID: kAECreateElement, selector: #selector(handleCreateAssetEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLocationInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLibraryInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetMetadataEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetDataOptionsEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEOpenDocuments, selector: #selector(handleOpenDocumentEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAECreateElement), selector: #selector(handleCreateAssetEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetLocationInfoEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetLibraryInfoEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetMetadataEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetDataOptionsEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: AEEventID(kAEOpenDocuments), selector: #selector(handleOpenDocumentEvent(_:withReplyEvent:)))
     }
 
     private func registerHandler(forEventID eventID: AEEventID, selector: Selector) {
         NSAppleEventManager.shared().setEventHandler(self,
                                                      andSelector: selector,
                                                      forEventClass: AEEventClass(kCoreEventClass),
-                                                     andEventID: AEEventID(eventID))
+                                                     andEventID: eventID)
+    }
+
+    @objc func handleOpenDocumentEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            NSLog("[ShareDestinationKit] INFO - Open Document Event Received")
+            // Extract asset information and handle the event
+            // Example: Extracting asset name
+            if let assetName = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
+                let asset = Asset(name: assetName)
+                self.assets[assetName] = asset
+                NSLog("[ShareDestinationKit] INFO - Asset created with name: \(assetName)")
+            } else {
+                NSLog("[ShareDestinationKit] ERROR - Failed to retrieve asset name from event")
+            }
+        }
     }
 
     @objc func handleCreateAssetEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Create Asset Event Received")
+            NSLog("[ShareDestinationKit] INFO - Create Asset Event Received")
             
             // Extract details from event and create a placeholder asset
             let assetName = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue ?? "Unknown"
             let asset = Asset(name: assetName)
             self.assets[assetName] = asset
-
+            
             // Respond with the placeholder asset
             // TODO: Send the appropriate reply
-            NSLog("Asset created with name: \(assetName)")
+            NSLog("[ShareDestinationKit] INFO - Asset created with name: \(assetName)")
         }
     }
 
     @objc func handleGetLocationInfoEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Location Info Event Received")
+            NSLog("[ShareDestinationKit] INFO - Get Location Info Event Received")
             // TODO: Extract asset information and handle the event
         }
     }
 
     @objc func handleGetLibraryInfoEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Library Info Event Received")
+            NSLog("[ShareDestinationKit] INFO - Get Library Info Event Received")
             // TODO: Extract asset information and handle the event
         }
     }
 
     @objc func handleGetMetadataEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Metadata Event Received")
+            NSLog("[ShareDestinationKit] INFO - Get Metadata Event Received")
             // TODO: Extract asset information and handle the event
         }
     }
 
     @objc func handleGetDataOptionsEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
         DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Data Options Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-
-    @objc func handleOpenDocumentEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Open Document Event Received")
+            NSLog("[ShareDestinationKit] INFO - Get Data Options Event Received")
             // TODO: Extract asset information and handle the event
         }
     }
