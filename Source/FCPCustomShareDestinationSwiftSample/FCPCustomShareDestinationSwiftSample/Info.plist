@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>fcpxml</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Asset Description File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
+	<key>OSAScriptingDefinition</key>
+	<string>OSAScriptingDefinition.sdef</string>
+	<key>com.apple.proapps.MediaAssetProtocol</key>
+	<dict>
+		<key>logoIcon</key>
+		<string>icon_26x26.png</string>
+	</dict>
+</dict>
+</plist>
