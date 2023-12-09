@@ -732,155 +732,15 @@ I've added this to my `Info.plist`:
 
 And I've added `OSAScriptingDefinition.sdef` to my Xcode project as per Apple's documentation above.
 
-How can I now write the Swift code needed to handle the Apple Events that come from Final Cut Pro?
+All the correct permissions and entitlements are set.
 
 My current Swift code is:
 
 ```
-import Cocoa
-import SwiftUI
-import Foundation
-
-@main
-struct ShareDestinationKitApp: App {
-
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    var appleEventHandler = AppleEventHandler()
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "film.stack")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-                .padding()
-
-            Text("Receiving Media and Data Through a Custom Share Destination Sample")
-                .fontWeight(.bold)
-                .padding()
-        }
-        .padding()
-        .preferredColorScheme(.dark)
-    }
-}
-
-class AppleEventHandler: NSObject {
-    // Placeholder for storing asset information
-    var assets: [String: Asset] = [:]
-
-    override init() {
-        NSLog("Initializing AppleEventHandler")
-        super.init()
-        setupAppleEventHandlers()
-    }
-
-    private func setupAppleEventHandlers() {
-        NSLog("setupAppleEventHandlers triggered")
-
-        // Register handlers for various Apple Events
-        registerHandler(forEventID: kAECreateElement, selector: #selector(handleCreateAssetEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLocationInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLibraryInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetMetadataEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetDataOptionsEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: kAEOpenDocuments, selector: #selector(handleOpenDocumentEvent(_:withReplyEvent:)))
-    }
-
-    private func registerHandler(forEventID eventID: AEEventID, selector: Selector) {
-        NSAppleEventManager.shared().setEventHandler(self,
-                                                     andSelector: selector,
-                                                     forEventClass: AEEventClass(kCoreEventClass),
-                                                     andEventID: AEEventID(eventID))
-    }
-
-    @objc func handleCreateAssetEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Create Asset Event Received")
-
-            // Extract details from event and create a placeholder asset
-            let assetName = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue ?? "Unknown"
-            let asset = Asset(name: assetName)
-            self.assets[assetName] = asset
-
-            // Respond with the placeholder asset
-            // TODO: Send the appropriate reply
-            NSLog("Asset created with name: \(assetName)")
-        }
-    }
-
-    @objc func handleGetLocationInfoEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Location Info Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-
-    @objc func handleGetLibraryInfoEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Library Info Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-
-    @objc func handleGetMetadataEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Metadata Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-
-    @objc func handleGetDataOptionsEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Get Data Options Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-
-    @objc func handleOpenDocumentEvent(_ event: NSAppleEventDescriptor, withReplyEvent reply: NSAppleEventDescriptor) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            NSLog("Open Document Event Received")
-            // TODO: Extract asset information and handle the event
-        }
-    }
-}
-
-// Define the Asset class to hold the asset information
-class Asset {
-    var name: String
-    // Add other properties as necessary
-
-    init(name: String) {
-        self.name = name
-    }
-
-    // Add methods to handle asset-related operations
-}
+<<<PUT YOUR LATEST CODE HERE>>>
 ```
 
-However, when I use this application as a "action" in Final Cut Pro, the application opens correctly by Final Cut Pro, but doesn't do anything.
-
-The only messages I get in the Xcode Console are:
-
-```
-Initializing AppleEventHandler
-setupAppleEventHandlers triggered
-This method should not be called on the main thread as it may lead to UI unresponsiveness.
-This method should not be called on the main thread as it may lead to UI unresponsiveness.
-```
-
-It seems that the code is not correctly getting any Apple Events from Final Cut Pro. All the correct permissions and entitlements are set.
-
-Please rewrite my code to ensure that it handles ALL of the events mentioned in the above documentation (i.e. `make new asset with properties`), it creates a placeholder asset object, etc.
-
-Please read the "Responding to Apple Events from Final Cut Pro" section carefully and make sure this code follows these instructions.
+<<<INSERT YOUR QUESTION HERE>>>
 
 Please make sure the Swift code is for Mac, and is clean, logical, documented and uses `NSLog` to verbosely note what's happening.
 
