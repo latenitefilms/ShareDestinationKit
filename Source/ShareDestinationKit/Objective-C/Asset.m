@@ -9,10 +9,16 @@
 #import "FCPXMetadataKeys.h"
 #import "MediaAssetHelperKeys.h"
 
+// ------------------------------------------------------------
+// Metadata Constants:
+// ------------------------------------------------------------
 const NSString* kMetadataKeyManagedAsset     = @"com.latenitefilms.ShareDestinationKit.managedAsset";
 const NSString* kMetadataKeyPreparedAsset    = @"com.latenitefilms.ShareDestinationKit.prepareAsset";
 const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinationKit.expeirationDate";
 
+// ------------------------------------------------------------
+// Asset:
+// ------------------------------------------------------------
 @implementation Asset
 {
     NSURL*          principalURL;
@@ -38,6 +44,9 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 		return NO;
 }
 
+// ------------------------------------------------------------
+// Is Media Extension:
+// ------------------------------------------------------------
 + (BOOL)isMediaExtension:(NSString*)extension
 {
 	if ( [extension isEqualToString:@"mov"] )
@@ -74,7 +83,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	// Put the logging statement later after the superclass was
     // initialized so we will be able to report the uniqueID:
     // ------------------------------------------------------------
-    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -93,7 +102,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	// I put the logging statement later after the superclass was
     // initialized so we will be able to report the uniqueID:
     // ------------------------------------------------------------
-    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -117,7 +126,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 		}
 	}
 
-    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -127,7 +136,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (void)dealloc
 {
-    NSLog(@"[ShareDestinationKit] INFO - dealloc Asset %@", self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - dealloc Asset %@", self.uniqueID);
 	folderLocation = nil;
 	mediaExtension = nil;
 	descExtension = nil;
@@ -141,40 +150,58 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (NSURL*)folderLocation
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property folderLocation %@", self.uniqueID, folderLocation);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property folderLocation %@", self.uniqueID, folderLocation);
 	return folderLocation;
 }
 
+// ------------------------------------------------------------
+// Media Extension:
+// ------------------------------------------------------------
 - (NSString *)mediaExtension
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property mediaExtension %@", self.uniqueID, mediaExtension);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property mediaExtension %@", self.uniqueID, mediaExtension);
 	return mediaExtension;
 }
 
+// ------------------------------------------------------------
+// Set Media Extension:
+// ------------------------------------------------------------
 - (void)setMediaExtension:(NSString *)newMediaExtension
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property mediaExtension %@", self.uniqueID, newMediaExtension);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property mediaExtension %@", self.uniqueID, newMediaExtension);
     mediaExtension = newMediaExtension;
 }
 
+// ------------------------------------------------------------
+// Description File Extension:
+// ------------------------------------------------------------
 - (NSString *)descExtension
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property descExtension %@", self.uniqueID, descExtension);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property descExtension %@", self.uniqueID, descExtension);
 	return descExtension;
 }
 
+// ------------------------------------------------------------
+// Set Description File Extension:
+// ------------------------------------------------------------
 - (void)setDescExtension:(NSString *)newDescExtension
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property descExtension %@", self.uniqueID, newDescExtension);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property descExtension %@", self.uniqueID, newDescExtension);
     descExtension = newDescExtension;
 }
 
+// ------------------------------------------------------------
+// Principal URL:
+// ------------------------------------------------------------
 - (NSURL*)principalURL
 {
-    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property principalURL %@", self.uniqueID, principalURL);
+    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property principalURL %@", self.uniqueID, principalURL);
 	return principalURL;
 }
 
+// ------------------------------------------------------------
+// Media File:
+// ------------------------------------------------------------
 -(NSURL*)mediaFile
 {
 	if ( principalURL != nil && mediaExtension != nil )
@@ -183,6 +210,9 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 		return nil;
 }
 
+// ------------------------------------------------------------
+// Description File:
+// ------------------------------------------------------------
 -(NSURL*)descFile
 {
     if ( principalURL != nil && descExtension != nil ) {
@@ -192,16 +222,25 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
     }
 }
 
+// ------------------------------------------------------------
+// Has Media:
+// ------------------------------------------------------------
 - (BOOL)hasMedia
 {
     return self.mediaExtension != nil;
 }
 
+// ------------------------------------------------------------
+// Has Description:
+// ------------------------------------------------------------
 - (BOOL)hasDescription
 {
     return self.descExtension != nil;
 }
 
+// ------------------------------------------------------------
+// Location Information:
+// ------------------------------------------------------------
 -(NSDictionary*)locationInfo
 {
     // ------------------------------------------------------------
@@ -222,16 +261,25 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	return [NSDictionary dictionaryWithDictionary:assetLocation];
 }
 
+// ------------------------------------------------------------
+// Metadata:
+// ------------------------------------------------------------
 - (NSDictionary*)metadata
 {
     return [NSDictionary dictionaryWithDictionary:metadata];
 }
 
+// ------------------------------------------------------------
+// Set Metadata:
+// ------------------------------------------------------------
 - (void)setMetadata:(NSDictionary *)newMetadata
 {
     metadata = [NSMutableDictionary dictionaryWithDictionary:newMetadata];
 }
 
+// ------------------------------------------------------------
+// Add Metadata:
+// ------------------------------------------------------------
 - (void)addMetadata:(id)value forKey:(NSString*)key
 {
     if ( metadata == nil )
@@ -239,46 +287,64 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	[metadata setObject:value forKey:key];
 }
 
+// ------------------------------------------------------------
+// Data Options:
+// ------------------------------------------------------------
 - (NSDictionary*)dataOptions
 {
     return [NSDictionary dictionaryWithDictionary:dataOptions];
 }
 
+// ------------------------------------------------------------
+// Set Data Options:
+// ------------------------------------------------------------
 - (void)setDataOptions:(NSDictionary *)newOptions
 {
     dataOptions = [NSMutableDictionary dictionaryWithDictionary:newOptions];
 }
 
+// ------------------------------------------------------------
+// Set Data Option:
+// ------------------------------------------------------------
 - (void)setDataOption:(id)option forKey:(NSString*)key
 {
     [dataOptions setObject:option forKey:key];
 }
 
+// ------------------------------------------------------------
+// Data Option for Key:
+// ------------------------------------------------------------
 - (id)dataOptionForKey:(NSString*)key
 {
     return [dataOptions objectForKey:key];
 }
 
+// ------------------------------------------------------------
+// Load Media:
+// ------------------------------------------------------------
 - (void)loadMedia
 {
     NSURL *theFile = self.mediaFile;
-
 	if ( [theFile checkResourceIsReachableAndReturnError:nil] ) {
 		internalAsset = [AVAsset assetWithURL:theFile];
 	}	
 }
 
+// ------------------------------------------------------------
+// Load Description:
+// ------------------------------------------------------------
 - (void)loadDescription
 {
     NSURL *theFile = self.descFile;
-    
 	if ( [theFile checkResourceIsReachableAndReturnError:nil] ) {
-		NSError*		loadError = nil;
-		
+		NSError* loadError = nil;
 		internalDescription = [[NSXMLDocument alloc] initWithContentsOfURL:theFile options:0 error:&loadError];
 	}
 }
 
+// ------------------------------------------------------------
+// Duration:
+// ------------------------------------------------------------
 - (NSString*)duration
 {
 	if ( [self.mediaFile checkResourceIsReachableAndReturnError:nil] ) {
@@ -289,6 +355,9 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
     }
 }
 
+// ------------------------------------------------------------
+// Frame Size:
+// ------------------------------------------------------------
 - (CGSize) frameSize
 {
     if ( ! [self hasRoles] ) {
@@ -305,6 +374,9 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
     return CGSizeZero;
 }
 
+// ------------------------------------------------------------
+// Frame Duration:
+// ------------------------------------------------------------
 - (NSString*) frameDuration
 {
     if ( ! [self hasRoles] ) {
@@ -324,31 +396,49 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
     return @"n/a";
 }
 
+// ------------------------------------------------------------
+// Share ID:
+// ------------------------------------------------------------
 - (NSString*)shareID
 {
     return [metadata objectForKey:kFCPXShareMetadataKeyShareID];
 }
 
+// ------------------------------------------------------------
+// Episode ID:
+// ------------------------------------------------------------
 - (NSString*)episodeID
 {
     return [metadata objectForKey:kFCPXShareMetadataKeyEpisodeID];
 }
 
+// ------------------------------------------------------------
+// Episode Number:
+// ------------------------------------------------------------
 - (NSNumber*)episodeNumber
 {
     return [metadata objectForKey:kFCPXShareMetadataKeyEpisodeNumber];
 }
 
+// ------------------------------------------------------------
+// Media Loaded:
+// ------------------------------------------------------------
 - (BOOL)mediaLoaded
 {
 	return internalAsset != nil;
 }
 
+// ------------------------------------------------------------
+// Description Loaded:
+// ------------------------------------------------------------
 - (BOOL)descriptionLoaded
 {
 	return internalDescription != nil;
 }
 
+// ------------------------------------------------------------
+// Has Roles:
+// ------------------------------------------------------------
 - (BOOL)hasRoles
 {
     return NO;

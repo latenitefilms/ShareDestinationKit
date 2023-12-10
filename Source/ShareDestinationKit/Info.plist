@@ -9,16 +9,6 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>fcpxml</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>Asset Description File</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
 				<string>sam</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
@@ -73,8 +63,40 @@
 	<key>OSAScriptingDefinition</key>
 	<string>OSAScriptingDefinition.sdef</string>
 	<key>com.apple.proapps.MediaAssetProtocol</key>
-	<dict></dict>
-
-
+	<dict/>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Open Asset Collection</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doOpenAssetCollectionService</string>
+			<key>NSPortName</key>
+			<string>ShareDestinationKit</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Open Asset Manager</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doOpenAssetManagerService</string>
+			<key>NSPortName</key>
+			<string>ShareDestinationKit</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSApplicationIdentifier</key>
+				<string>com.apple.FinalCut</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

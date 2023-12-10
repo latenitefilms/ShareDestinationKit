@@ -20,6 +20,13 @@
 }
 
 // ------------------------------------------------------------
+// Open URLs:
+// ------------------------------------------------------------
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls {
+    NSLog(@"[ShareDestinationKit] INFO - Open URLs: %@", urls);
+}
+
+// ------------------------------------------------------------
 // Open a list of files.
 // Also stick a list of object specifiers for opened object,
 // if there is incoming OpenDoc AppleEvent.
@@ -36,29 +43,31 @@
     
     if ( currentEvent != nil && directParams != nil ) {
         NSArray *urls = [NSArray scriptingUserListWithDescriptor:directParams];
-
         NSLog(@"[ShareDestinationKit] INFO - Open Document URLs: %@", urls);
     }
-
+    
     if ( resultDesc == nil ) {
         resultDesc = [NSAppleEventDescriptor listDescriptor];
     }
     
     NSDocumentController *docController = [NSDocumentController sharedDocumentController];
-
+    
     [self openFileInFileNameList:filenames
                          atIndex:0
                   withController:docController
                      docDescList:directParams
                   resultDescList:resultDesc];
-
+    
     [currentReply setDescriptor:resultDesc forKeyword:keyDirectObject];
     
     if ( currentReply != nil && resultDesc != nil ) {
-        NSLog(@"Opened Objects:%@.", resultDesc);
+        NSLog(@"[ShareDestinationKit] INFO - Opened Objects: %@.", resultDesc);
     }
 }
 
+// ------------------------------------------------------------
+// Open File in File Name List:
+// ------------------------------------------------------------
 - (void)openFileInFileNameList:(NSArray*)filenames
                        atIndex:(NSUInteger)index
                 withController:(NSDocumentController*)docController
@@ -68,12 +77,23 @@
     
     NSLog(@"[ShareDestinationKit] INFO - openFileInFileNameList triggered!");
     
-    if ( index >= [filenames count] )
+    NSLog(@"[ShareDestinationKit] INFO - filenames: %@", filenames);
+          
+    if ( index >= [filenames count] ) {
+        NSLog(@"[ShareDestinationKit] INFO - No files so aborting!");
         return;
+    }
     
     NSURL *url = [[NSURL fileURLWithPath:[filenames objectAtIndex:index]] URLByResolvingSymlinksInPath];
-
+    
     [docController openDocumentWithContentsOfURL:url display:YES completionHandler:^(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error){
+        
+        if (error) {
+            NSLog(@"[ShareDestinationKit] ERROR - Problem opening document: %@", error);
+            return;
+        }
+        
+        NSLog(@"[ShareDestinationKit] INFO - docController completion handler triggered!");
         
         id opendObject = document;
         NSScriptObjectSpecifier *opendObjectSpec = [opendObject objectSpecifier];

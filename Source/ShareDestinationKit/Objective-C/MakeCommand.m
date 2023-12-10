@@ -19,21 +19,21 @@
 - (id)performDefaultImplementation {
     id		result = nil;
     
-    NSLog(@"[ShareDestinationKit] INFO - MakeCommand performDefaultImplementation");
+    //NSLog(@"[ShareDestinationKit] INFO - MakeCommand performDefaultImplementation");
     
     NSDictionary * theArguments = [self evaluatedArguments];
     
     // ------------------------------------------------------------
     // Show the direct parameter and arguments:
     // ------------------------------------------------------------
-    NSLog(@"[ShareDestinationKit] INFO - The direct parameter is: '%@'", [self directParameter]);
-    NSLog(@"[ShareDestinationKit] INFO - The other parameters are: '%@'", theArguments);
+    //NSLog(@"[ShareDestinationKit] INFO - The direct parameter is: '%@'", [self directParameter]);
+    //NSLog(@"[ShareDestinationKit] INFO - The other parameters are: '%@'", theArguments);
     
     id classParameter = [theArguments objectForKey:@"ObjectClass"];
     NSDictionary* properties = [theArguments objectForKey:@"KeyDictionary"];
     
     if ( classParameter == nil ) {
-        NSLog(@"[ShareDestinationKit] INFO - No object class specified, so aborting!");
+        //NSLog(@"[ShareDestinationKit] INFO - No object class specified, so aborting!");
         [self setScriptErrorNumber:errAEParamMissed];
         return nil;
     }
@@ -42,7 +42,7 @@
     
     if ( [[NSScriptClassDescription classDescriptionForClass:[Asset class]] matchesAppleEventCode:classCode] ) {
         
-        NSLog(@"[ShareDestinationKit] INFO - classes match");
+        //NSLog(@"[ShareDestinationKit] INFO - classes match");
         
         DocumentController *docController = [DocumentController sharedDocumentController];
         Document *currentDocument = [docController currentDocument];
@@ -54,13 +54,13 @@
                 // Pick up the first document if current document is nil:
                 // ------------------------------------------------------------
                 currentDocument = [documents objectAtIndex:0];
-                NSLog(@"[ShareDestinationKit] INFO - Picking the first document...");
+                //NSLog(@"[ShareDestinationKit] INFO - Picking the first document...");
             } else {
                 // ------------------------------------------------------------
                 // Create an untitled document:
                 // ------------------------------------------------------------
                 currentDocument = [docController openUntitledDocumentAndDisplay:YES error:nil];
-                NSLog(@"[ShareDestinationKit] INFO - Creating a new document...");
+                //NSLog(@"[ShareDestinationKit] INFO - Creating a new document...");
             }
         }
         
@@ -72,15 +72,15 @@
         id dataOptionsParameter = nil;
         
         if ( properties != nil ) {
-            NSLog(@"[ShareDestinationKit] INFO - properties aren't nil");
+            //NSLog(@"[ShareDestinationKit] INFO - properties aren't nil");
                   
             nameParameter = [properties objectForKey:@"name"];
             metadataParameter = [properties objectForKey:@"metadata"];
             dataOptionsParameter = [properties objectForKey:@"dataOptions"];
             
-            NSLog(@"[ShareDestinationKit] INFO - nameParameter: %@", nameParameter);
-            NSLog(@"[ShareDestinationKit] INFO - metadataParameter: %@", metadataParameter);
-            NSLog(@"[ShareDestinationKit] INFO - dataOptionsParameter: %@", dataOptionsParameter);
+            //NSLog(@"[ShareDestinationKit] INFO - nameParameter: %@", nameParameter);
+            //NSLog(@"[ShareDestinationKit] INFO - metadataParameter: %@", metadataParameter);
+            //NSLog(@"[ShareDestinationKit] INFO - dataOptionsParameter: %@", dataOptionsParameter);
         }
         
         // ------------------------------------------------------------
@@ -91,7 +91,7 @@
         
         if ( interactionLevel == kAECanInteract ||interactionLevel == kAEAlwaysInteract || interactionLevel == kAECanSwitchLayer ) {
             
-            NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're allowed to interact with the user!");
+            //NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're allowed to interact with the user!");
             
             // ------------------------------------------------------------
             // If we wanted to, we could implement our window controller
@@ -131,7 +131,7 @@
             
         } else {
             
-            NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're NOT allowed to interact with the user");
+            //NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're NOT allowed to interact with the user");
             
             // ------------------------------------------------------------
             // Create a new asset at a default location if user
@@ -152,7 +152,7 @@
         // Invoke the standard implementation by the super class:
         // ------------------------------------------------------------
         result = [super performDefaultImplementation];
-        NSLog(@"[ShareDestinationKit] INFO - Invoke the standard implementation by the super class");
+        //NSLog(@"[ShareDestinationKit] INFO - Invoke the standard implementation by the super class");
     }
     return result;
 }
@@ -162,7 +162,7 @@
 // ------------------------------------------------------------
 - (NSUInteger)appleEventUserInteractionLevel
 {
-    NSLog(@"[ShareDestinationKit] INFO - appleEventUserInteractionLevel triggered");
+    //NSLog(@"[ShareDestinationKit] INFO - appleEventUserInteractionLevel triggered");
     NSAppleEventManager     *aem = [NSAppleEventManager sharedAppleEventManager];
     NSAppleEventDescriptor  *currentEvent = [aem currentAppleEvent];
     NSAppleEventDescriptor  *interactionLevel = [currentEvent attributeDescriptorForKeyword:keyInteractLevelAttr];

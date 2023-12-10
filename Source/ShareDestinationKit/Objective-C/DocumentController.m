@@ -12,6 +12,8 @@
 
 - (void)openDocumentWithContentsOfURL:(NSURL *)url display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error))completionHandler
 {
+    NSLog(@"[ShareDestinationKit] INFO - openDocumentWithContentsOfURL triggered!");
+    
 	NSError *theErr = nil;
 	NSString *documentType = [self typeForContentsOfURL:url error:&theErr];
     
@@ -21,6 +23,9 @@
 	}
 
 	if ( [documentType isEqualToString:@"Asset Media File"] || [documentType isEqualToString:@"Asset Description File"] ) {
+        
+        NSLog(@"[ShareDestinationKit] INFO - It's an Asset Media File or Asset Description File!");
+        
 		Document *currentDocument = [self currentDocument];
 		
 		if ( currentDocument == nil ) {
@@ -36,8 +41,8 @@
 		NSUInteger assetIndex = [currentDocument addURL:url content:YES metadata:nil dataOptions:nil];
         
 		completionHandler([currentDocument.assets objectAtIndex:assetIndex], NO, theErr);
-	}
-	else {
+	} else {
+        NSLog(@"[ShareDestinationKit] INFO - It's NOT an Asset Media File or Asset Description File, so calling the super method...");
 		[super openDocumentWithContentsOfURL:url display:displayDocument completionHandler:completionHandler];
 	}
 }

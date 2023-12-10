@@ -142,7 +142,7 @@
 // because we will always call them together:
 // ------------------------------------------------------------
 - (id)container {
-    NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
+    //NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
     return container;
 }
 
@@ -150,7 +150,7 @@
 // Container Property:
 // ------------------------------------------------------------
 - (NSString *)containerProperty {
-    NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
+    //NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
     return containerProperty;
 }
 
@@ -158,7 +158,7 @@
 // Set Container:
 // ------------------------------------------------------------
 - (void)setContainer:(id)value andProperty:(NSString *)property {
-    NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
+    //NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
     if (container != value) {
 		container = value;
     }
@@ -179,7 +179,7 @@
 // Set Unique ID:
 // ------------------------------------------------------------
 - (void)setUniqueID:(NSString *)value {
-    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (uniqueID != value) {
         uniqueID = [value copy];
     }
@@ -190,7 +190,7 @@
 // nothing out of the ordinary here:
 // ------------------------------------------------------------
 - (NSString *)name {
-    NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, self.collectionName);
+    //NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, self.collectionName);
     return self.collectionName;
 }
 
@@ -198,7 +198,7 @@
 // Set Name:
 // ------------------------------------------------------------
 - (void)setName:(NSString *)value {
-    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (self.collectionName != value) {
         self.collectionName = [value copy];
     }
@@ -444,7 +444,7 @@
 // Return the entire list of assets:
 // ------------------------------------------------------------
 - (NSArray*) assets {
-    NSLog(@"[ShareDestinationKit] INFO - returning assets from a bucket %@", self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - returning assets from a bucket %@", self.uniqueID);
 	return self.collection;
 }
 
@@ -454,7 +454,7 @@
 -(void) insertInAssets:(id) asset {
     Asset* assetObject = (Asset*)asset;
     NSNumber *indexObject = [NSNumber numberWithInteger:0];
-    NSLog(@"[ShareDestinationKit] INFO - inserting asset %@ into bucket %@", assetObject.uniqueID, self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - inserting asset %@ into bucket %@", assetObject.uniqueID, self.uniqueID);
 	[asset setContainer:self andProperty:@"assets"];
 	[self.collection insertObject:assetObject atIndex:0];
     [URLHash setObject:indexObject forKey:[assetObject principalURL]];
@@ -467,7 +467,7 @@
 -(void) insertInAssets:(id) asset atIndex:(unsigned)index {
     Asset* assetObject = (Asset*)asset;
     NSNumber *indexObject = [NSNumber numberWithInteger:index];
-    NSLog(@"[ShareDestinationKit] INFO - insert asset %@ at index %d into bucket %@", assetObject.uniqueID, index, self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - insert asset %@ at index %d into bucket %@", assetObject.uniqueID, index, self.uniqueID);
 	[asset setContainer:self andProperty:@"assets"];
 	[self.collection insertObject:assetObject atIndex:index];
     [URLHash setObject:indexObject forKey:[assetObject principalURL]];
@@ -478,7 +478,7 @@
 // Remove a asset from the list:
 // ------------------------------------------------------------
 -(void) removeFromAssetsAtIndex:(unsigned)index {
-    NSLog(@"[ShareDestinationKit] INFO - removing asset at %d from bucket %@", index, self.uniqueID);
+    //NSLog(@"[ShareDestinationKit] INFO - removing asset at %d from bucket %@", index, self.uniqueID);
     Asset* assetObject = [self.collection objectAtIndex:index];
     [URLHash removeObjectForKey:[assetObject principalURL]];
     [UniqueIDHash removeObjectForKey:assetObject.uniqueID];

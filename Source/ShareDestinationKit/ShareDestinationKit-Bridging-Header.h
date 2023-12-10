@@ -1,5 +1,8 @@
 //
-//  Use this file to import your target's public headers that you would like to expose to Swift.
+//  ShareDestinationKit-Bridging-Header.h
+//  ShareDestinationKit
+//
+//  Created by Chris Hocking on 10/12/2023.
 //
 
 #import "ApplicationDelegate.h"
@@ -14,3 +17,7 @@
 #import "Object.h"
 #import "Asset.h"
 
+#import "MakeCommand.h"
+
+#import "WindowController.h"
+#import "OutlineViewDataSource.h"
