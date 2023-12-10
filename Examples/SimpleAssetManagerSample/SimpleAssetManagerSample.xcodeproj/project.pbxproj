@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E0A981117B59887009F645A /* SAMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0A981017B59887009F645A /* SAMWindowController.m */; };
+		6E6C815B178E274400FF6A8F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6C815A178E274400FF6A8F /* Cocoa.framework */; };
+		6E6C8165178E274400FF6A8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C8163178E274400FF6A8F /* InfoPlist.strings */; };
+		6E6C8167178E274400FF6A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8166178E274400FF6A8F /* main.m */; };
+		6E6C816E178E274400FF6A8F /* SAMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C816D178E274400FF6A8F /* SAMDocument.m */; };
+		6E6C8171178E274400FF6A8F /* SAMDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C816F178E274400FF6A8F /* SAMDocument.xib */; };
+		6E6C8174178E274400FF6A8F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C8172178E274400FF6A8F /* MainMenu.xib */; };
+		6E6C817C178E29A400FF6A8F /* SAMNewAssetSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C817A178E29A400FF6A8F /* SAMNewAssetSheet.xib */; };
+		6E6C8187178E2A2500FF6A8F /* OutlineViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8186178E2A2500FF6A8F /* OutlineViewDataSource.m */; };
+		6E6C818C178E2A3100FF6A8F /* FCPXMetadataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8189178E2A3100FF6A8F /* FCPXMetadataKeys.m */; };
+		6E6C818D178E2A3100FF6A8F /* MediaAssetHelperKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C818B178E2A3100FF6A8F /* MediaAssetHelperKeys.m */; };
+		6E6C8190178E2A4100FF6A8F /* ScriptingSupportCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C818F178E2A4100FF6A8F /* ScriptingSupportCategories.m */; };
+		6E6C8192178E2A8000FF6A8F /* SAMObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8184178E2A0F00FF6A8F /* SAMObject.m */; };
+		6E6C8193178E2A8000FF6A8F /* SAMAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8182178E2A0E00FF6A8F /* SAMAsset.m */; };
+		6E6C8194178E2A8000FF6A8F /* SAMApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C8180178E29F000FF6A8F /* SAMApplicationDelegate.m */; };
+		6E6C8195178E2A8000FF6A8F /* SAMDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C817E178E29E200FF6A8F /* SAMDocumentController.m */; };
+		6E6C8197178E2B0D00FF6A8F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6C8196178E2B0D00FF6A8F /* AVFoundation.framework */; };
+		6E6C819B178E2CD800FF6A8F /* OSAScriptingDefinition.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C819A178E2CD800FF6A8F /* OSAScriptingDefinition.sdef */; };
+		6E6C819E178E2DB900FF6A8F /* SAMMakeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C819D178E2DB900FF6A8F /* SAMMakeCommand.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6E0A980F17B59886009F645A /* SAMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMWindowController.h; sourceTree = "<group>"; };
+		6E0A981017B59887009F645A /* SAMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMWindowController.m; sourceTree = "<group>"; };
+		6E6C8156178E274400FF6A8F /* SimpleAssetManagerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAssetManagerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6C815A178E274400FF6A8F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6E6C8162178E274400FF6A8F /* SimpleAssetManagerSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleAssetManagerSample-Info.plist"; sourceTree = "<group>"; };
+		6E6C8164178E274400FF6A8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6E6C8166178E274400FF6A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6E6C8168178E274400FF6A8F /* SimpleAssetManagerSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAssetManagerSample-Prefix.pch"; sourceTree = "<group>"; };
+		6E6C816C178E274400FF6A8F /* SAMDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMDocument.h; sourceTree = "<group>"; };
+		6E6C816D178E274400FF6A8F /* SAMDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMDocument.m; sourceTree = "<group>"; };
+		6E6C8170178E274400FF6A8F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAMDocument.xib; sourceTree = "<group>"; };
+		6E6C8173178E274400FF6A8F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6E6C817B178E29A400FF6A8F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAMNewAssetSheet.xib; sourceTree = "<group>"; };
+		6E6C817D178E29E200FF6A8F /* SAMDocumentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMDocumentController.h; sourceTree = "<group>"; };
+		6E6C817E178E29E200FF6A8F /* SAMDocumentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMDocumentController.m; sourceTree = "<group>"; };
+		6E6C817F178E29F000FF6A8F /* SAMApplicationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMApplicationDelegate.h; sourceTree = "<group>"; };
+		6E6C8180178E29F000FF6A8F /* SAMApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMApplicationDelegate.m; sourceTree = "<group>"; };
+		6E6C8181178E2A0E00FF6A8F /* SAMAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMAsset.h; sourceTree = "<group>"; };
+		6E6C8182178E2A0E00FF6A8F /* SAMAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMAsset.m; sourceTree = "<group>"; };
+		6E6C8183178E2A0E00FF6A8F /* SAMObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMObject.h; sourceTree = "<group>"; };
+		6E6C8184178E2A0F00FF6A8F /* SAMObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMObject.m; sourceTree = "<group>"; };
+		6E6C8185178E2A2500FF6A8F /* OutlineViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineViewDataSource.h; sourceTree = "<group>"; };
+		6E6C8186178E2A2500FF6A8F /* OutlineViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineViewDataSource.m; sourceTree = "<group>"; };
+		6E6C8188178E2A3100FF6A8F /* FCPXMetadataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCPXMetadataKeys.h; sourceTree = "<group>"; };
+		6E6C8189178E2A3100FF6A8F /* FCPXMetadataKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCPXMetadataKeys.m; sourceTree = "<group>"; };
+		6E6C818A178E2A3100FF6A8F /* MediaAssetHelperKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaAssetHelperKeys.h; sourceTree = "<group>"; };
+		6E6C818B178E2A3100FF6A8F /* MediaAssetHelperKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaAssetHelperKeys.m; sourceTree = "<group>"; };
+		6E6C818E178E2A4100FF6A8F /* ScriptingSupportCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptingSupportCategories.h; sourceTree = "<group>"; };
+		6E6C818F178E2A4100FF6A8F /* ScriptingSupportCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptingSupportCategories.m; sourceTree = "<group>"; };
+		6E6C8191178E2A4F00FF6A8F /* scriptLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scriptLog.h; sourceTree = "<group>"; };
+		6E6C8196178E2B0D00FF6A8F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6E6C8199178E2BB900FF6A8F /* SimpleAssetManagerSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleAssetManagerSample.entitlements; sourceTree = "<group>"; };
+		6E6C819A178E2CD800FF6A8F /* OSAScriptingDefinition.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OSAScriptingDefinition.sdef; sourceTree = "<group>"; };
+		6E6C819C178E2DB900FF6A8F /* SAMMakeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMMakeCommand.h; sourceTree = "<group>"; };
+		6E6C819D178E2DB900FF6A8F /* SAMMakeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMMakeCommand.m; sourceTree = "<group>"; };
+		6E7C058417BD435F0056E386 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		6E7C058717BD64280056E386 /* Interaction.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = Interaction.scpt; path = ../Interaction.scpt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E6C8153178E274400FF6A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6C8197178E2B0D00FF6A8F /* AVFoundation.framework in Frameworks */,
+				6E6C815B178E274400FF6A8F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E11C0F917B5A89C00A12915 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6E6C816F178E274400FF6A8F /* SAMDocument.xib */,
+				6E6C817A178E29A400FF6A8F /* SAMNewAssetSheet.xib */,
+				6E6C8172178E274400FF6A8F /* MainMenu.xib */,
+				6E0A980F17B59886009F645A /* SAMWindowController.h */,
+				6E0A981017B59887009F645A /* SAMWindowController.m */,
+				6E6C8185178E2A2500FF6A8F /* OutlineViewDataSource.h */,
+				6E6C8186178E2A2500FF6A8F /* OutlineViewDataSource.m */,
+				6E6C8188178E2A3100FF6A8F /* FCPXMetadataKeys.h */,
+				6E6C8189178E2A3100FF6A8F /* FCPXMetadataKeys.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6E11C0FB17B5A8CB00A12915 /* Scripting */ = {
+			isa = PBXGroup;
+			children = (
+				6E6C819A178E2CD800FF6A8F /* OSAScriptingDefinition.sdef */,
+				6E6C8183178E2A0E00FF6A8F /* SAMObject.h */,
+				6E6C8184178E2A0F00FF6A8F /* SAMObject.m */,
+				6E6C8181178E2A0E00FF6A8F /* SAMAsset.h */,
+				6E6C8182178E2A0E00FF6A8F /* SAMAsset.m */,
+				6E6C816C178E274400FF6A8F /* SAMDocument.h */,
+				6E6C816D178E274400FF6A8F /* SAMDocument.m */,
+				6E6C819C178E2DB900FF6A8F /* SAMMakeCommand.h */,
+				6E6C819D178E2DB900FF6A8F /* SAMMakeCommand.m */,
+				6E6C818E178E2A4100FF6A8F /* ScriptingSupportCategories.h */,
+				6E6C818F178E2A4100FF6A8F /* ScriptingSupportCategories.m */,
+				6E6C818A178E2A3100FF6A8F /* MediaAssetHelperKeys.h */,
+				6E6C818B178E2A3100FF6A8F /* MediaAssetHelperKeys.m */,
+			);
+			name = Scripting;
+			sourceTree = "<group>";
+		};
+		6E6C814B178E274400FF6A8F = {
+			isa = PBXGroup;
+			children = (
+				6E7C058417BD435F0056E386 /* ReadMe.txt */,
+				6E6C8160178E274400FF6A8F /* SimpleAssetManagerSample */,
+				6E6C8159178E274400FF6A8F /* Frameworks */,
+				6E6C8157178E274400FF6A8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E6C8157178E274400FF6A8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E6C8156178E274400FF6A8F /* SimpleAssetManagerSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E6C8159178E274400FF6A8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E6C815A178E274400FF6A8F /* Cocoa.framework */,
+				6E6C8196178E2B0D00FF6A8F /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E6C8160178E274400FF6A8F /* SimpleAssetManagerSample */ = {
+			isa = PBXGroup;
+			children = (
+				6E11C0FB17B5A8CB00A12915 /* Scripting */,
+				6E11C0F917B5A89C00A12915 /* View */,
+				6E6C8199178E2BB900FF6A8F /* SimpleAssetManagerSample.entitlements */,
+				6E6C817F178E29F000FF6A8F /* SAMApplicationDelegate.h */,
+				6E6C8180178E29F000FF6A8F /* SAMApplicationDelegate.m */,
+				6E6C817D178E29E200FF6A8F /* SAMDocumentController.h */,
+				6E6C817E178E29E200FF6A8F /* SAMDocumentController.m */,
+				6E6C8161178E274400FF6A8F /* Supporting Files */,
+				6E7C058717BD64280056E386 /* Interaction.scpt */,
+			);
+			path = SimpleAssetManagerSample;
+			sourceTree = "<group>";
+		};
+		6E6C8161178E274400FF6A8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E6C8162178E274400FF6A8F /* SimpleAssetManagerSample-Info.plist */,
+				6E6C8163178E274400FF6A8F /* InfoPlist.strings */,
+				6E6C8166178E274400FF6A8F /* main.m */,
+				6E6C8168178E274400FF6A8F /* SimpleAssetManagerSample-Prefix.pch */,
+				6E6C8191178E2A4F00FF6A8F /* scriptLog.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E6C8155178E274400FF6A8F /* SimpleAssetManagerSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6C8177178E274400FF6A8F /* Build configuration list for PBXNativeTarget "SimpleAssetManagerSample" */;
+			buildPhases = (
+				6E6C8152178E274400FF6A8F /* Sources */,
+				6E6C8153178E274400FF6A8F /* Frameworks */,
+				6E6C8154178E274400FF6A8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleAssetManagerSample;
+			productName = SimpleAssetManagerSample;
+			productReference = 6E6C8156178E274400FF6A8F /* SimpleAssetManagerSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E6C814D178E274400FF6A8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SAM;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Video Applications";
+			};
+			buildConfigurationList = 6E6C8150178E274400FF6A8F /* Build configuration list for PBXProject "SimpleAssetManagerSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6E6C814B178E274400FF6A8F;
+			productRefGroup = 6E6C8157178E274400FF6A8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E6C8155178E274400FF6A8F /* SimpleAssetManagerSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E6C8154178E274400FF6A8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6C8165178E274400FF6A8F /* InfoPlist.strings in Resources */,
+				6E6C8171178E274400FF6A8F /* SAMDocument.xib in Resources */,
+				6E6C8174178E274400FF6A8F /* MainMenu.xib in Resources */,
+				6E6C817C178E29A400FF6A8F /* SAMNewAssetSheet.xib in Resources */,
+				6E6C819B178E2CD800FF6A8F /* OSAScriptingDefinition.sdef in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E6C8152178E274400FF6A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6C8192178E2A8000FF6A8F /* SAMObject.m in Sources */,
+				6E6C8193178E2A8000FF6A8F /* SAMAsset.m in Sources */,
+				6E6C8194178E2A8000FF6A8F /* SAMApplicationDelegate.m in Sources */,
+				6E6C8195178E2A8000FF6A8F /* SAMDocumentController.m in Sources */,
+				6E6C8167178E274400FF6A8F /* main.m in Sources */,
+				6E6C816E178E274400FF6A8F /* SAMDocument.m in Sources */,
+				6E6C8187178E2A2500FF6A8F /* OutlineViewDataSource.m in Sources */,
+				6E6C818C178E2A3100FF6A8F /* FCPXMetadataKeys.m in Sources */,
+				6E6C818D178E2A3100FF6A8F /* MediaAssetHelperKeys.m in Sources */,
+				6E6C8190178E2A4100FF6A8F /* ScriptingSupportCategories.m in Sources */,
+				6E6C819E178E2DB900FF6A8F /* SAMMakeCommand.m in Sources */,
+				6E0A981117B59887009F645A /* SAMWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6E6C8163178E274400FF6A8F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E6C8164178E274400FF6A8F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6E6C816F178E274400FF6A8F /* SAMDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E6C8170178E274400FF6A8F /* en */,
+			);
+			name = SAMDocument.xib;
+			sourceTree = "<group>";
+		};
+		6E6C8172178E274400FF6A8F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E6C8173178E274400FF6A8F /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		6E6C817A178E29A400FF6A8F /* SAMNewAssetSheet.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E6C817B178E29A400FF6A8F /* en */,
+			);
+			name = SAMNewAssetSheet.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6E6C8175178E274400FF6A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6E6C8176178E274400FF6A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6E6C8178178E274400FF6A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimpleAssetManagerSample/SimpleAssetManagerSample.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleAssetManagerSample/SimpleAssetManagerSample-Prefix.pch";
+				INFOPLIST_FILE = "SimpleAssetManagerSample/SimpleAssetManagerSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6E6C8179178E274400FF6A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimpleAssetManagerSample/SimpleAssetManagerSample.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleAssetManagerSample/SimpleAssetManagerSample-Prefix.pch";
+				INFOPLIST_FILE = "SimpleAssetManagerSample/SimpleAssetManagerSample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E6C8150178E274400FF6A8F /* Build configuration list for PBXProject "SimpleAssetManagerSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6C8175178E274400FF6A8F /* Debug */,
+				6E6C8176178E274400FF6A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6C8177178E274400FF6A8F /* Build configuration list for PBXNativeTarget "SimpleAssetManagerSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6C8178178E274400FF6A8F /* Debug */,
+				6E6C8179178E274400FF6A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E6C814D178E274400FF6A8F /* Project object */;
+}

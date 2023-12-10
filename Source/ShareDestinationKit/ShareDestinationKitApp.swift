@@ -51,18 +51,18 @@ class AppleEventHandler: NSObject {
         NSLog("[ShareDestinationKit] INFO - Setting up Apple Event Handlers...")
         
         // Register handlers for various Apple Events
-        registerHandler(forEventID: AEEventID(kAECreateElement), selector: #selector(handleCreateAssetEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetLocationInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetLibraryInfoEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetMetadataEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: AEEventID(kAEGetData), selector: #selector(handleGetDataOptionsEvent(_:withReplyEvent:)))
-        registerHandler(forEventID: AEEventID(kAEOpenDocuments), selector: #selector(handleOpenDocumentEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAECreateElement, selector: #selector(handleCreateAssetEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLocationInfoEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetLibraryInfoEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetMetadataEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAEGetData, selector: #selector(handleGetDataOptionsEvent(_:withReplyEvent:)))
+        registerHandler(forEventID: kAEOpenDocuments, selector: #selector(handleOpenDocumentEvent(_:withReplyEvent:)))
     }
 
     private func registerHandler(forEventID eventID: AEEventID, selector: Selector) {
         NSAppleEventManager.shared().setEventHandler(self,
                                                      andSelector: selector,
-                                                     forEventClass: AEEventClass(kCoreEventClass),
+                                                     forEventClass: kCoreEventClass,
                                                      andEventID: eventID)
     }
 

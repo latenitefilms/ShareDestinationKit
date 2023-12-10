@@ -4,6 +4,16 @@ This is a sample Swift application to demonstrate how to receive media and data 
 
 You can learn more about Custom Share Destinations on [Apple's Developer Site](https://developer.apple.com/documentation/professional_video_applications/content_and_metadata_exchanges_with_final_cut_pro/receiving_media_and_data_through_a_custom_share_destination).
 
+You can find some older documentation [here](https://developer.apple.com/library/archive/documentation/FinalCutProX/Conceptual/FinalCutProXWorkflowsGuide/Exporting/Exporting.html#//apple_ref/doc/uid/TP40013781-CH3-SW21).
+
+---
+
+## SimpleAssetManagerSample
+
+Included in the `SimpleAssetManagerSample` folder is an old Apple sample project in Objective-C.
+
+This sample has disappeared from the Internet for some reason, but it still works and is a great reference point.
+
 ---
 
 ## Example ChatGPT Prompt

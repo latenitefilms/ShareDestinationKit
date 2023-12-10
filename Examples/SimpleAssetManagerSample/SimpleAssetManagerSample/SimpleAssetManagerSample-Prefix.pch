@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'SimpleAssetManager' target
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
+
+#define SCRIPTING_SUPPORT_LOG			0
+
+#define DEBUG_SHEET_POSITION            0
+
+#define DOCUMENT_NIB_NAME               @"SAMDocument"
