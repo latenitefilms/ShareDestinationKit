@@ -194,6 +194,7 @@
                  // ------------------------------------------------------------
                  // Update the user interface:
                  // ------------------------------------------------------------
+                 NSLog(@"[ShareDestinationKit] INFO - Update the user interface...");
                  [self updateOutlineView:nil];
                  [self updateSelectionDetailFields];
              }
@@ -256,15 +257,15 @@
     [self updateNewAssetWantsDescription:nil];
     
 	NSWindow* docWindow = [self window];
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [NSApp beginSheet: self.sheetForNewAsset
-	   modalForWindow: docWindow
-		modalDelegate: modalDelegate
-	   didEndSelector: didEndSelector
-		  contextInfo: contextInfo];
-#pragma GCC diagnostic pop
+        
+    [docWindow beginSheet:self.sheetForNewAsset completionHandler:^(NSModalResponse returnCode) {
+        if (modalDelegate && [modalDelegate respondsToSelector:didEndSelector]) {
+            IMP imp = [modalDelegate methodForSelector:didEndSelector];
+            void (*func)(id, SEL, NSWindow *, NSInteger, void *) = (void *)imp;
+            func(modalDelegate, didEndSelector, self.sheetForNewAsset, returnCode, contextInfo);
+        }
+    }];
+
 }
 
 // ------------------------------------------------------------
@@ -273,10 +274,7 @@
 - (IBAction)finishNewAssetSheet:sender
 {
     NSLog(@"[ShareDestinationKit] INFO - finishNewAssetSheet triggered");
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [NSApp endSheet:self.sheetForNewAsset returnCode:NSAlertDefaultReturn];
-#pragma GCC diagnostic pop
+    [NSApp endSheet:self.sheetForNewAsset returnCode:NSModalResponseOK];
 }
 
 // ------------------------------------------------------------
@@ -285,10 +283,7 @@
 - (IBAction)cancelNewAssetSheet:sender
 {
     NSLog(@"[ShareDestinationKit] INFO - cancelNewAssetSheet triggered");
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    [NSApp endSheet:self.sheetForNewAsset returnCode:NSAlertAlternateReturn];
-#pragma GCC diagnostic pop
+    [NSApp endSheet:self.sheetForNewAsset returnCode:NSModalResponseCancel];
 }
 
 // ------------------------------------------------------------
@@ -301,23 +296,34 @@
     Asset*       newAsset = nil;
     Document*    document = [self document];
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	if ( returnCode == NSAlertDefaultReturn ) {
-#pragma GCC diagnostic pop
+    NSLog(@"[ShareDestinationKit] INFO - document: %@", document);
+    
+	if ( returnCode == NSModalResponseOK ) {
+        
+        NSLog(@"[ShareDestinationKit] INFO - returnCode is NSModalResponseOK!");
+        
         NSDictionary    *newAssetLocationInfo = [self collectAssetLocation];
+        
+        NSLog(@"[ShareDestinationKit] INFO - newAssetLocationInfo: %@", newAssetLocationInfo);
+        
         NSUInteger      assetIndex = [document addAssetAtLocation:newAssetLocationInfo
                                                           content:NO
                                                          metadata:[self collectNewAssetMetadata]
                                                       dataOptions:[self collectNewAssetDataOptions]];
+        
+        NSLog(@"[ShareDestinationKit] INFO - assetIndex: %lu", (unsigned long)assetIndex);
+        
         document.defaultAssetLocation = newAssetLocationInfo;
         newAsset = [document.assets objectAtIndex:assetIndex];
+        
+        NSLog(@"[ShareDestinationKit] INFO - newAsset: %@", newAsset);
 	}
     [sheet orderOut:self];
 
     // ------------------------------------------------------------
     // Update the User Interface:
     // ------------------------------------------------------------
+    NSLog(@"[ShareDestinationKit] INFO - Update the user interface...");
     [self updateOutlineView:nil];
     [self updateSelectionDetailFields];
 
@@ -349,14 +355,13 @@
         // otherwise leave the chosen location alone:
         // ------------------------------------------------------------
         if ( sender != nil ) {
-            NSOpenPanel     *openPanel = [NSOpenPanel openPanel];
+            NSOpenPanel *openPanel = [NSOpenPanel openPanel];
             
             [openPanel setAllowsMultipleSelection:NO];
             [openPanel setCanChooseDirectories:YES];
             [openPanel setCanChooseFiles:NO];
             [openPanel beginSheetModalForWindow:self.sheetForNewAsset completionHandler:^(NSInteger result) {
-                NSURL*          folderURL = [[openPanel URLs] objectAtIndex:0];
-                
+                NSURL* folderURL = [[openPanel URLs] objectAtIndex:0];
                 [self.locationFolderURLFieldForNewAsset setStringValue:[folderURL absoluteString]];
             }];
         }
@@ -424,31 +429,49 @@
 {
     NSLog(@"[ShareDestinationKit] INFO - populateNewAssetMetadata triggered");
     
+    // ------------------------------------------------------------
+    // Description:
+    // ------------------------------------------------------------
     NSString *description = [metadataset objectForKey:kFCPXMetadataKeyDescription];
-    
-    if ( description == nil )
+    if ( description == nil ) {
         description = @"";
+    }
     [self.descriptionFieldForNewAsset setStringValue:description];
     
+    // ------------------------------------------------------------
+    // Expiration Date:
+    // ------------------------------------------------------------
     NSDate *expirationDate = [metadataset objectForKey:kMetadataKeyExpirationDate];
-    
-    if ( expirationDate == nil )
+    if ( expirationDate == nil ) {
         expirationDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    }
     [self.expirationDatePickerForNewAsset setDateValue:expirationDate];
     
+    // ------------------------------------------------------------
+    // Share ID:
+    // ------------------------------------------------------------
     NSString* shareID = [metadataset objectForKey:kFCPXShareMetadataKeyShareID];
-    if ( shareID == nil )
+    if ( shareID == nil ) {
         shareID = @"";
+    }
     [self.shareIDFieldForNewAsset setStringValue:shareID];
 
+    // ------------------------------------------------------------
+    // Episode ID:
+    // ------------------------------------------------------------
     NSString* episodeID = [metadataset objectForKey:kFCPXShareMetadataKeyEpisodeID];
-    if ( episodeID == nil )
+    if ( episodeID == nil ) {
         episodeID = @"";
+    }
     [self.episodeIDFieldForNewAsset setStringValue:episodeID];
     
+    // ------------------------------------------------------------
+    // Episode Number:
+    // ------------------------------------------------------------
     NSString *episodeNumber = [metadataset objectForKey:kFCPXShareMetadataKeyEpisodeNumber];
-    if ( episodeNumber == nil )
+    if ( episodeNumber == nil ) {
         episodeNumber = @"";
+    }
     [self.episodeNumberFieldForNewAsset setStringValue:episodeNumber];
 }
 
@@ -521,14 +544,12 @@
     // ------------------------------------------------------------
 	// Bring up a open panel:
     // ------------------------------------------------------------
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
 	[openPanel setAllowedFileTypes:[NSArray arrayWithObjects:AVFileTypeQuickTimeMovie, AVFileTypeMPEG4, AVFileTypeAppleM4V, AVFileTypeAIFF, AVFileTypeWAVE, AVFileTypeAppleM4A, @"aiff", nil]];
 	[openPanel setAllowsMultipleSelection:YES];
 	[openPanel setMessage:@"Choose asset media file to add"];
 	[openPanel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result){
-		if (result == NSOKButton) {
+		if (result == NSModalResponseOK) {
 			NSArray *selectedURLs = [openPanel URLs];
 			
 			for ( NSURL* theURL in selectedURLs ) {
@@ -545,7 +566,6 @@
 			[self updateSelectionDetailFields];
 		}
 	}];
-#pragma GCC diagnostic pop
 }
 
 // ------------------------------------------------------------

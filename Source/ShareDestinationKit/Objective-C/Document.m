@@ -75,7 +75,6 @@
     WindowController *primaryWindowController;
 }
 
-
 // ------------------------------------------------------------
 // Initialize:
 // ------------------------------------------------------------
@@ -83,6 +82,8 @@
 {
     self = [super init];
     if (self) {
+        NSLog(@"[ShareDestinationKit] INFO - Create a new Collection Array...");
+              
         // ------------------------------------------------------------
 		// Create the collection array:
         // ------------------------------------------------------------
@@ -102,6 +103,9 @@
 {
     self = [super initWithContentsOfURL:url ofType:typeName error:outError];
 	if (self) {
+        
+        NSLog(@"[ShareDestinationKit] INFO - Create a new Collection Array...");
+        
         // ------------------------------------------------------------
 		// Create the collection array:
         // ------------------------------------------------------------
@@ -141,7 +145,7 @@
 // because we will always call them together:
 // ------------------------------------------------------------
 - (id)container {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
     return container;
 }
 
@@ -149,7 +153,7 @@
 // Container Property:
 // ------------------------------------------------------------
 - (NSString *)containerProperty {
-    //NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
+    NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
     return containerProperty;
 }
 
@@ -157,7 +161,7 @@
 // Set Container:
 // ------------------------------------------------------------
 - (void)setContainer:(id)value andProperty:(NSString *)property {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
     if (container != value) {
 		container = value;
     }
@@ -178,7 +182,7 @@
 // Set Unique ID:
 // ------------------------------------------------------------
 - (void)setUniqueID:(NSString *)value {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (uniqueID != value) {
         uniqueID = [value copy];
     }
@@ -189,7 +193,7 @@
 // nothing out of the ordinary here:
 // ------------------------------------------------------------
 - (NSString *)name {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, self.collectionName);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, self.collectionName);
     return self.collectionName;
 }
 
@@ -197,7 +201,7 @@
 // Set Name:
 // ------------------------------------------------------------
 - (void)setName:(NSString *)value {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (self.collectionName != value) {
         self.collectionName = [value copy];
     }
@@ -269,6 +273,14 @@
                         metadata:(NSDictionary*)metadataset
                      dataOptions:(NSDictionary*)options;
 {
+    
+    NSLog(@"[ShareDestinationKit] INFO - addAssetAtLocation triggered!");
+    
+    NSLog(@"[ShareDestinationKit] INFO - locationInfo: %@", locationInfo);
+    NSLog(@"[ShareDestinationKit] INFO - content: %d", load == 1);
+    NSLog(@"[ShareDestinationKit] INFO - metadataset: %@", metadataset);
+    NSLog(@"[ShareDestinationKit] INFO - options: %@", options);
+    
     Asset       *theAsset           = nil;
     NSUInteger  assetIndex          = [self assetIndexForLocation:locationInfo];
     NSNumber    *hasMediaObject     = [locationInfo objectForKey:kMediaAssetLocationHasMediaKey];
@@ -279,25 +291,40 @@
     NSString*   descExtension       = nil;
 
     if ( mediaExtension == nil && hasMedia ) {
+        NSLog(@"[ShareDestinationKit] INFO - no media extension, but has media.");
         mediaExtension = @"mov";
     }
     
     if ( descExtension == nil && hasDesc ) {
+        NSLog(@"[ShareDestinationKit] INFO - no description extension, but has description.");
         descExtension = @"fcpxml";
     }
     
     if ( assetIndex == -1 ) {
+        
+        NSLog(@"[ShareDestinationKit] INFO - no exciting assets");
+        
         assetIndex = [self.assets count];
+        
+        NSLog(@"[ShareDestinationKit] INFO - assetIndex: %lu", (unsigned long)assetIndex);
+        
         theAsset = [[Asset alloc] init:[locationInfo objectForKey:kMediaAssetLocationBasenameKey]
                                        at:[locationInfo objectForKey:kMediaAssetLocationFolderKey]
                                     media:mediaExtension
                                      desc:descExtension];
         
+        NSLog(@"[ShareDestinationKit] INFO - theAsset: %@", theAsset);
+        
         [theAsset setMetadata:metadataset];
         [theAsset addMetadata:@"1" forKey:kMetadataKeyManagedAsset];
         [theAsset setDataOptions:options];
+        
         [self insertInAssets:theAsset atIndex:(unsigned int)assetIndex];
+        
     } else {
+        
+        NSLog(@"[ShareDestinationKit] INFO - there are exciting assets");
+        
         theAsset = [self.assets objectAtIndex:assetIndex];
         
         if ( mediaExtension != nil ) {
@@ -357,6 +384,8 @@
 // ------------------------------------------------------------
 - (NSUInteger)addAssetAtURL:(NSURL*)url content:(BOOL)load metadata:(NSDictionary*)metadataset dataOptions:(NSDictionary*)options
 {
+    NSLog(@"[ShareDestinationKit] INFO - addAssetAtURL triggered!");
+    
     NSURL           *principalURL   = [url URLByDeletingPathExtension];
     NSURL           *folderURL      = [principalURL URLByDeletingLastPathComponent];
     NSString        *baseName       = [principalURL lastPathComponent];
@@ -390,6 +419,7 @@
 // ------------------------------------------------------------
 - (void)removeAssetAtIndex:(NSUInteger)index
 {
+    NSLog(@"[ShareDestinationKit] INFO - removeAssetAtIndex: %lu", (unsigned long)index);
 	[self removeFromAssetsAtIndex:(unsigned int)index];
 }
 
@@ -398,6 +428,7 @@
 // ------------------------------------------------------------
 - (void)removeAsset:(Asset*)asset
 {
+    NSLog(@"[ShareDestinationKit] INFO - removeAsset: %@", asset);
     [URLHash removeObjectForKey:[asset principalURL]];
     [UniqueIDHash removeObjectForKey:asset.uniqueID];
     [self.collection removeObject:asset];
@@ -411,6 +442,8 @@
             metadata:(NSDictionary*)metadataset
          dataOptions:(NSDictionary*)dataOptions
 {
+    NSLog(@"[ShareDestinationKit] INFO - addURL: %@", url);
+    
     NSURL*      principalURL = nil;
     NSUInteger  assetIndex = -1;
     
@@ -460,7 +493,7 @@
 // Return the entire list of assets:
 // ------------------------------------------------------------
 - (NSArray*) assets {
-    //NSLog(@"[ShareDestinationKit] INFO - returning assets from a bucket %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - returning assets from a bucket %@", self.uniqueID);
 	return self.collection;
 }
 
@@ -470,7 +503,7 @@
 -(void) insertInAssets:(id) asset {
     Asset* assetObject = (Asset*)asset;
     NSNumber *indexObject = [NSNumber numberWithInteger:0];
-    //NSLog(@"[ShareDestinationKit] INFO - inserting asset %@ into bucket %@", assetObject.uniqueID, self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - inserting asset %@ into bucket %@", assetObject.uniqueID, self.uniqueID);
 	[asset setContainer:self andProperty:@"assets"];
 	[self.collection insertObject:assetObject atIndex:0];
     [URLHash setObject:indexObject forKey:[assetObject principalURL]];
@@ -478,12 +511,14 @@
 }
 
 // ------------------------------------------------------------
-// Insert a asset at some position in the list:
+// Insert an asset at some position in the list:
 // ------------------------------------------------------------
 -(void) insertInAssets:(id) asset atIndex:(unsigned)index {
-    Asset* assetObject = (Asset*)asset;
-    NSNumber *indexObject = [NSNumber numberWithInteger:index];
-    //NSLog(@"[ShareDestinationKit] INFO - insert asset %@ at index %d into bucket %@", assetObject.uniqueID, index, self.uniqueID);
+    Asset* assetObject      = (Asset*)asset;
+    NSNumber *indexObject   = [NSNumber numberWithInteger:index];
+    
+    NSLog(@"[ShareDestinationKit] INFO - insert asset %@ at index %d into bucket %@", assetObject.uniqueID, index, self.uniqueID);
+    
 	[asset setContainer:self andProperty:@"assets"];
 	[self.collection insertObject:assetObject atIndex:index];
     [URLHash setObject:indexObject forKey:[assetObject principalURL]];
@@ -494,7 +529,7 @@
 // Remove a asset from the list:
 // ------------------------------------------------------------
 -(void) removeFromAssetsAtIndex:(unsigned)index {
-    //NSLog(@"[ShareDestinationKit] INFO - removing asset at %d from bucket %@", index, self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - removing asset at %d from bucket %@", index, self.uniqueID);
     Asset* assetObject = [self.collection objectAtIndex:index];
     [URLHash removeObjectForKey:[assetObject principalURL]];
     [UniqueIDHash removeObjectForKey:assetObject.uniqueID];
