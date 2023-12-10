@@ -1,10 +1,18 @@
 # ShareDestinationKit
 
-This is a sample Swift application to demonstrate how to receive media and data through Final Cut Pro Custom Share Destinations.
+This is a sample **Swift & Swift UI** application to demonstrate how to receive media and data through Final Cut Pro **Custom Share Destinations**.
+
+This is currently very much a **work-in-progress** as I slowly get my head around converting the `SimpleAssetManagerSample` example into Swift.
+
+---
+
+## Documentation
 
 You can learn more about Custom Share Destinations on [Apple's Developer Site](https://developer.apple.com/documentation/professional_video_applications/content_and_metadata_exchanges_with_final_cut_pro/receiving_media_and_data_through_a_custom_share_destination).
 
-You can find some older documentation [here](https://developer.apple.com/library/archive/documentation/FinalCutProX/Conceptual/FinalCutProXWorkflowsGuide/Exporting/Exporting.html#//apple_ref/doc/uid/TP40013781-CH3-SW21).
+You can find some older (but still very useful) documentation [here](https://developer.apple.com/library/archive/documentation/FinalCutProX/Conceptual/FinalCutProXWorkflowsGuide/Exporting/Exporting.html#//apple_ref/doc/uid/TP40013781-CH3-SW21).
+
+You can learn more about `NSAppleEventManager` [here](https://developer.apple.com/documentation/foundation/nsappleeventmanager).
 
 ---
 
@@ -13,6 +21,8 @@ You can find some older documentation [here](https://developer.apple.com/library
 Included in the `SimpleAssetManagerSample` [folder](https://github.com/latenitefilms/ShareDestinationKit/tree/main/Examples/SimpleAssetManagerSample) is an old Apple sample project in Objective-C.
 
 This sample has disappeared from the Internet for some reason, but it still works and is a great reference point.
+
+This example works great on Apple Silicon and with the latest Final Cut Pro 10.7.
 
 ---
 
