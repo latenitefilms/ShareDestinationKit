@@ -10,7 +10,7 @@ You can find some older documentation [here](https://developer.apple.com/library
 
 ## SimpleAssetManagerSample
 
-Included in the `SimpleAssetManagerSample` folder is an old Apple sample project in Objective-C.
+Included in the `SimpleAssetManagerSample` [folder](https://github.com/latenitefilms/ShareDestinationKit/tree/main/Examples/SimpleAssetManagerSample) is an old Apple sample project in Objective-C.
 
 This sample has disappeared from the Internet for some reason, but it still works and is a great reference point.
 
