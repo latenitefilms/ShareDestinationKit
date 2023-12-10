@@ -19,6 +19,8 @@
 		22BF9A702B25E61400431809 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BF9A6E2B25E61400431809 /* Document.xib */; };
 		22BF9A732B25E63400431809 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A712B25E63400431809 /* WindowController.m */; };
 		22BF9A762B25E9CE00431809 /* OutlineViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A742B25E9CE00431809 /* OutlineViewDataSource.m */; };
+		22BF9A7B2B26151200431809 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BF9A7A2B26151200431809 /* AVFoundation.framework */; };
+		22BF9A7D2B26151600431809 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BF9A7C2B26151600431809 /* Cocoa.framework */; };
 		22E843FA2B25B3E800E55584 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E843F82B25B3E800E55584 /* ApplicationDelegate.m */; };
 		22E843FE2B25B45100E55584 /* ScriptingSupportCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E843FD2B25B45100E55584 /* ScriptingSupportCategories.m */; };
 		22E844012B25C29900E55584 /* DocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E844002B25C29900E55584 /* DocumentController.m */; };
@@ -48,6 +50,8 @@
 		22BF9A722B25E63400431809 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowController.h; path = "Objective-C/WindowController.h"; sourceTree = "<group>"; };
 		22BF9A742B25E9CE00431809 /* OutlineViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewDataSource.m; path = "Objective-C/OutlineViewDataSource.m"; sourceTree = "<group>"; };
 		22BF9A752B25E9CE00431809 /* OutlineViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewDataSource.h; path = "Objective-C/OutlineViewDataSource.h"; sourceTree = "<group>"; };
+		22BF9A7A2B26151200431809 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		22BF9A7C2B26151600431809 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		22E843F72B25B3E700E55584 /* ShareDestinationKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareDestinationKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		22E843F82B25B3E800E55584 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationDelegate.m; path = "Objective-C/ApplicationDelegate.m"; sourceTree = "<group>"; };
 		22E843F92B25B3E800E55584 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = "Objective-C/ApplicationDelegate.h"; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22BF9A7D2B26151600431809 /* Cocoa.framework in Frameworks */,
+				22BF9A7B2B26151200431809 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +83,7 @@
 			children = (
 				220057E22B2506AD00B69E8A /* ShareDestinationKit */,
 				220057E12B2506AD00B69E8A /* Products */,
+				22BF9A792B26151200431809 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +144,15 @@
 				22BF9A6D2B25E61400431809 /* NewAssetSheet.xib */,
 			);
 			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		22BF9A792B26151200431809 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22BF9A7C2B26151600431809 /* Cocoa.framework */,
+				22BF9A7A2B26151200431809 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		22E843FB2B25B40200E55584 /* Objective-C Code */ = {

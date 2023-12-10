@@ -67,7 +67,6 @@
 @property (readonly) id container;
 @property (readonly) NSString *containerProperty;
 
-
 // ------------------------------------------------------------
 // Since the container and containerProperty fields are always
 // set at the same time, we have lumped those setter calls

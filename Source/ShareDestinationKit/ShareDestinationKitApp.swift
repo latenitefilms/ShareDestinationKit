@@ -8,6 +8,7 @@
 import Cocoa
 import SwiftUI
 import Foundation
+import AVFoundation
 
 @main
 struct ShareDestinationKitApp: App {
@@ -18,6 +19,18 @@ struct ShareDestinationKitApp: App {
                 .frame(width: 700, height: 180)
         }
         .windowResizabilityContentSize()
+    }
+}
+
+class ApplicationDelegate: NSObject, NSApplicationDelegate {
+    var windowController: WindowController?
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // Instantiate the window controller from the XIB
+        windowController = WindowController()
+
+        // Show the window
+        windowController?.showWindow(self)
     }
 }
 

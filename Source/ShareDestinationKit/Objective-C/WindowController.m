@@ -47,12 +47,6 @@
 @property (weak) IBOutlet NSPopUpButton  *metadataSetPopupForNewAsset;
 @property (weak) IBOutlet NSButton       *hasDecriptionCheckBoxForNewAsset;
 
-// ------------------------------------------------------------
-// The Wait Sheet:
-// ------------------------------------------------------------
-//@property (weak) IBOutlet NSWindow              *FCPXWaitSheet;
-//@property (weak) IBOutlet NSProgressIndicator	*FCPXWaitIndicator;
-
 @end
 
 // ------------------------------------------------------------
@@ -97,6 +91,7 @@
 // ------------------------------------------------------------
 - (void)windowDidLoad
 {
+    NSLog(@"[ShareDestinationKit] INFO - windowDidLoad triggered");
     [self updateSelectionDetailFields];
 }
 

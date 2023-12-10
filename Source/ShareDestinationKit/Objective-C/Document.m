@@ -90,8 +90,7 @@
         URLHash         = [NSMutableDictionary dictionaryWithCapacity:0];
         UniqueIDHash    = [NSMutableDictionary dictionaryWithCapacity:0];
 		collectionName  = [self displayName];
-		
-		uniqueID = [Object calculateNewUniqueID];
+		uniqueID        = [Object calculateNewUniqueID];
     }
     return self;
 }
@@ -106,12 +105,11 @@
         // ------------------------------------------------------------
 		// Create the collection array:
         // ------------------------------------------------------------
-        collection = [NSMutableArray arrayWithCapacity:0];
-        URLHash = [NSMutableDictionary dictionaryWithCapacity:0];
-        UniqueIDHash = [NSMutableDictionary dictionaryWithCapacity:0];
-		collectionName = [[url URLByDeletingPathExtension] lastPathComponent];
-		
-		uniqueID = [Object calculateNewUniqueID];
+        collection      = [NSMutableArray arrayWithCapacity:0];
+        URLHash         = [NSMutableDictionary dictionaryWithCapacity:0];
+        UniqueIDHash    = [NSMutableDictionary dictionaryWithCapacity:0];
+		collectionName  = [[url URLByDeletingPathExtension] lastPathComponent];
+		uniqueID        = [Object calculateNewUniqueID];
 	}
 	return self;
 }
@@ -121,6 +119,7 @@
 // ------------------------------------------------------------
 - (void)makeWindowControllers
 {
+    NSLog(@"[ShareDestinationKit] INFO - makeWindowControllers triggered!");
     primaryWindowController = [[WindowController alloc] init];
     [self addWindowController:primaryWindowController];
 }
@@ -212,11 +211,11 @@
 - (NSURL*)assetURLAtIndex:(NSUInteger)index
 {
 	Asset *asset = (Asset*)[self.collection objectAtIndex:index];
-	
-	if ( asset == nil )
-		return nil;
-	else
-		return [asset principalURL];
+    if ( asset == nil ) {
+        return nil;
+    } else {
+        return [asset principalURL];
+    }
 }
 
 // ------------------------------------------------------------
@@ -225,11 +224,11 @@
 - (NSUInteger)assetIndexForURL:(NSURL*)url
 {
     NSNumber *indexObject = [URLHash objectForKey:url];
-
-    if ( indexObject != NULL )
+    if ( indexObject != NULL ) {
         return [indexObject integerValue];
-    else
+    } else {
         return -1;
+    }
 }
 
 // ------------------------------------------------------------
@@ -238,11 +237,11 @@
 - (NSUInteger)assetIndexForUniqueID:(NSString*)theID
 {
     NSNumber *indexObject = [UniqueIDHash objectForKey:theID];
-    
-    if ( indexObject != NULL )
+    if ( indexObject != NULL ) {
         return [indexObject integerValue];
-    else
+    } else {
         return -1;
+    }
 }
 
 // ------------------------------------------------------------
@@ -253,10 +252,11 @@
     NSURL       *folderURL = [locationInfo objectForKey:kMediaAssetLocationFolderKey];
     NSString    *baseName = [locationInfo objectForKey:kMediaAssetLocationBasenameKey];
 
-    if ( folderURL == nil || baseName == nil )
+    if ( folderURL == nil || baseName == nil ) {
         return -1;
+    }
     
-    NSURL       *principalURL = [folderURL URLByAppendingPathComponent:baseName];
+    NSURL *principalURL = [folderURL URLByAppendingPathComponent:baseName];
     
     return [self assetIndexForURL:principalURL];
 }
@@ -269,19 +269,22 @@
                         metadata:(NSDictionary*)metadataset
                      dataOptions:(NSDictionary*)options;
 {
-    Asset    *theAsset = nil;
-    NSUInteger  assetIndex = [self assetIndexForLocation:locationInfo];
-    NSNumber    *hasMediaObject = [locationInfo objectForKey:kMediaAssetLocationHasMediaKey];
-    NSNumber    *hasDescObject = [locationInfo objectForKey:kMediaAssetLocationHasDescriptionKey];
-    BOOL        hasMedia = hasMediaObject != nil && [hasMediaObject boolValue];
-    BOOL        hasDesc = hasDescObject != nil && [hasDescObject boolValue];
-    NSString*   mediaExtension = nil;
-    NSString*   descExtension = nil;
+    Asset       *theAsset           = nil;
+    NSUInteger  assetIndex          = [self assetIndexForLocation:locationInfo];
+    NSNumber    *hasMediaObject     = [locationInfo objectForKey:kMediaAssetLocationHasMediaKey];
+    NSNumber    *hasDescObject      = [locationInfo objectForKey:kMediaAssetLocationHasDescriptionKey];
+    BOOL        hasMedia            = hasMediaObject != nil && [hasMediaObject boolValue];
+    BOOL        hasDesc             = hasDescObject != nil && [hasDescObject boolValue];
+    NSString*   mediaExtension      = nil;
+    NSString*   descExtension       = nil;
 
-    if ( mediaExtension == nil && hasMedia )
+    if ( mediaExtension == nil && hasMedia ) {
         mediaExtension = @"mov";
-    if ( descExtension == nil && hasDesc )
-        descExtension = @"fcpxml";    
+    }
+    
+    if ( descExtension == nil && hasDesc ) {
+        descExtension = @"fcpxml";
+    }
     
     if ( assetIndex == -1 ) {
         assetIndex = [self.assets count];
@@ -294,24 +297,32 @@
         [theAsset addMetadata:@"1" forKey:kMetadataKeyManagedAsset];
         [theAsset setDataOptions:options];
         [self insertInAssets:theAsset atIndex:(unsigned int)assetIndex];
-    }
-    else {
+    } else {
         theAsset = [self.assets objectAtIndex:assetIndex];
         
-        if ( mediaExtension != nil )
+        if ( mediaExtension != nil ) {
+            // ------------------------------------------------------------
+            // Has a Media Extension:
+            // ------------------------------------------------------------
             [theAsset setMediaExtension:mediaExtension];
-        else if ( hasMediaObject != nil && ! hasMedia )
+        } else if ( hasMediaObject != nil && ! hasMedia ) {
             // ------------------------------------------------------------
             // Remove the extension if that was an explicit NO:
             // ------------------------------------------------------------
             [theAsset setMediaExtension:nil];
-        if ( descExtension != nil )
+        }
+        
+        if ( descExtension != nil ) {
+            // ------------------------------------------------------------
+            // Has a Description Extension:
+            // ------------------------------------------------------------
             [theAsset setDescExtension:descExtension];
-        else if ( hasDescObject != nil && ! hasDesc )
+        } else if ( hasDescObject != nil && ! hasDesc ) {
             // ------------------------------------------------------------
             // Remove the extension if that was an explicit NO:
             // ------------------------------------------------------------
             [theAsset setDescExtension:nil];
+        }
         
         for ( NSString* key in metadataset ) {
             [theAsset addMetadata:[metadataset objectForKey:key] forKey:key];
@@ -322,15 +333,19 @@
     }
     
     if ( load ) {
-        if ( hasMedia  )
+        if ( hasMedia  ) {
             [theAsset loadMedia];
-        if ( hasDesc )
+        }
+        
+        if ( hasDesc ) {
             [theAsset loadDescription];
+        }
     }
     
     // ------------------------------------------------------------
     // Update the User Interface:
     // ------------------------------------------------------------
+    NSLog(@"[ShareDestinationKit] INFO - Refresh the user interface...");
     [primaryWindowController updateOutlineView:nil];
     [primaryWindowController updateSelectionDetailFields];
     
@@ -342,11 +357,11 @@
 // ------------------------------------------------------------
 - (NSUInteger)addAssetAtURL:(NSURL*)url content:(BOOL)load metadata:(NSDictionary*)metadataset dataOptions:(NSDictionary*)options
 {
-    NSURL           *principalURL = [url URLByDeletingPathExtension];
-    NSURL           *folderURL = [principalURL URLByDeletingLastPathComponent];
-    NSString        *baseName = [principalURL lastPathComponent];
-    NSString        *extension = [url pathExtension];
-    NSDictionary    *locationInfo = nil;
+    NSURL           *principalURL   = [url URLByDeletingPathExtension];
+    NSURL           *folderURL      = [principalURL URLByDeletingLastPathComponent];
+    NSString        *baseName       = [principalURL lastPathComponent];
+    NSString        *extension      = [url pathExtension];
+    NSDictionary    *locationInfo   = nil;
 
     if ( [Asset isMediaExtension:extension] ) {
         locationInfo = [NSDictionary dictionaryWithObjectsAndKeys:folderURL, kMediaAssetLocationFolderKey,
@@ -410,6 +425,7 @@
     // ------------------------------------------------------------
     // Update the user interface:
     // ------------------------------------------------------------
+    NSLog(@"[ShareDestinationKit] INFO - Refresh the user interface...");
     [primaryWindowController updateOutlineView:nil];
     [primaryWindowController updateSelectionDetailFields];
 
@@ -578,7 +594,6 @@
 }
 
 #pragma mark Load & Save Data Methods
-
 
 // ------------------------------------------------------------
 // Standard NSDocument load and save data methods:

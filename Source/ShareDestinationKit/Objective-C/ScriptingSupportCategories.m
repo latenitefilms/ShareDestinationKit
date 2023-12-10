@@ -114,6 +114,9 @@
 
 @implementation NSArray (UserList)
 
+// ------------------------------------------------------------
+// Scripting User List Descriptor:
+// ------------------------------------------------------------
 +(NSArray*)scriptingUserListWithDescriptor:(NSAppleEventDescriptor*)desc
 {
     // ------------------------------------------------------------
@@ -137,6 +140,9 @@
     return [NSArray arrayWithArray:array];
 }
 
+// ------------------------------------------------------------
+// Scripting User List Descriptor:
+// ------------------------------------------------------------
 -(NSAppleEventDescriptor*)scriptingUserListDescriptor
 {
     // ------------------------------------------------------------
@@ -159,7 +165,9 @@
 
 @end
 
-
+// ------------------------------------------------------------
+// NSAppleEventDescriptor:
+// ------------------------------------------------------------
 @implementation NSAppleEventDescriptor (GenericObject)
 
 +(NSAppleEventDescriptor*)descriptorWithObject:(id)object
@@ -192,6 +200,9 @@
     return desc;
 }
 
+// ------------------------------------------------------------
+// Object Value:
+// ------------------------------------------------------------
 -(id)objectValue
 {
     DescType    descType = [self descriptorType];
@@ -226,7 +237,7 @@
             // Create `NSData` to hold the data for an unfamiliar type:
             // ------------------------------------------------------------
             bigEndianDescType = EndianU32_NtoB(descType);
-            NSLog(@"[ShareDestinationKit] INFO - Creating NSData for AE desc type %.4s.", (char*)&bigEndianDescType);
+            //NSLog(@"[ShareDestinationKit] INFO - Creating NSData for AE desc type %.4s.", (char*)&bigEndianDescType);
             object = [self data];
             break;
     }
@@ -236,6 +247,9 @@
 
 @end
 
+// ------------------------------------------------------------
+// NSAppleEventDescriptor:
+// ------------------------------------------------------------
 @implementation NSAppleEventDescriptor (URLValue)
 
 + (NSAppleEventDescriptor *)descriptorWithURL:(NSURL *)url

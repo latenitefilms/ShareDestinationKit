@@ -14,7 +14,6 @@
 // Read from URL:
 // ------------------------------------------------------------
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError {
-    
     NSLog(@"[ShareDestinationKit] INFO - readFromURL triggered!");
     return YES;
 }

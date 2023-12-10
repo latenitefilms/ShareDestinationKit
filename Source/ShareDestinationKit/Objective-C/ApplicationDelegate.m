@@ -33,13 +33,13 @@
 // ------------------------------------------------------------
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
-    NSLog(@"[ShareDestinationKit] INFO - openFiles triggered!");
+    NSLog(@"[ShareDestinationKit] INFO - openFiles triggered - filenames: %@", filenames);
     
-    NSAppleEventManager *aemanager = [NSAppleEventManager sharedAppleEventManager];
-    NSAppleEventDescriptor *currentEvent = [aemanager currentAppleEvent];
-    NSAppleEventDescriptor *currentReply = [aemanager currentReplyAppleEvent];
-    NSAppleEventDescriptor *directParams = [currentEvent descriptorForKeyword:keyDirectObject];
-    NSAppleEventDescriptor *resultDesc = [currentReply descriptorForKeyword:keyDirectObject];
+    NSAppleEventManager *aemanager          = [NSAppleEventManager sharedAppleEventManager];
+    NSAppleEventDescriptor *currentEvent    = [aemanager currentAppleEvent];
+    NSAppleEventDescriptor *currentReply    = [aemanager currentReplyAppleEvent];
+    NSAppleEventDescriptor *directParams    = [currentEvent descriptorForKeyword:keyDirectObject];
+    NSAppleEventDescriptor *resultDesc      = [currentReply descriptorForKeyword:keyDirectObject];
     
     if ( currentEvent != nil && directParams != nil ) {
         NSArray *urls = [NSArray scriptingUserListWithDescriptor:directParams];
