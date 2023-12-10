@@ -210,6 +210,11 @@
        completionHandler:(void (^)(Asset* newAsset))handler
 {
     NSLog(@"[ShareDestinationKit] INFO - newAssetWithName triggered");
+    
+    NSLog(@"[ShareDestinationKit] INFO - assetName: %@", assetName);
+    NSLog(@"[ShareDestinationKit] INFO - assetMetadata: %@", assetMetadata);
+    NSLog(@"[ShareDestinationKit] INFO - assetDataOptions: %@", assetDataOptions);
+          
     // ------------------------------------------------------------
     // if assetName is empty, default to "Untitled":
     // ------------------------------------------------------------
@@ -221,11 +226,11 @@
     // Bring up the custom sheet:
     // ------------------------------------------------------------
     [self invokeNewAssetSheetNamed:assetName
-                                      metadata:assetMetadata
-                                   dataOptions:assetDataOptions
-                                      delegate:self
-                                didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
-                                   contextInfo:(void*)CFBridgingRetain(handler)];
+                          metadata:assetMetadata
+                       dataOptions:assetDataOptions
+                          delegate:self
+                    didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
+                       contextInfo:(void*)CFBridgingRetain(handler)];
 }
 
 
