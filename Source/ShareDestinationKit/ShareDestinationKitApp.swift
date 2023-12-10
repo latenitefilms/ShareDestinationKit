@@ -9,6 +9,25 @@ import Cocoa
 import SwiftUI
 import Foundation
 
+// The info plist key that indicates the application supports the protocol
+let kMediaAssetProtocolInfoKey: String = "com.apple.proapps.MediaAssetProtocol"
+
+// The asset location dictionary keys
+let kMediaAssetLocationFolderKey: String = "folder"
+let kMediaAssetLocationBasenameKey: String = "basename"
+let kMediaAssetLocationHasMediaKey: String = "hasMedia"
+let kMediaAssetLocationHasDescriptionKey: String = "hasDescription"
+
+// The asset data option dictionary keys
+let kMediaAssetDataOptionAvailableMetadataSetsKey: String = "availableMetadataSets"
+let kMediaAssetDataOptionMetadataSetKey: String = "metadataSet"
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+}
+
 @main
 struct ShareDestinationKitApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
