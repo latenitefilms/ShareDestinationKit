@@ -237,7 +237,7 @@
             // Create `NSData` to hold the data for an unfamiliar type:
             // ------------------------------------------------------------
             bigEndianDescType = EndianU32_NtoB(descType);
-            //NSLog(@"[ShareDestinationKit] INFO - Creating NSData for AE desc type %.4s.", (char*)&bigEndianDescType);
+            NSLog(@"[ShareDestinationKit] INFO - Creating NSData for AE desc type %.4s.", (char*)&bigEndianDescType);
             object = [self data];
             break;
     }

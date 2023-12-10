@@ -83,7 +83,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	// Put the logging statement later after the superclass was
     // initialized so we will be able to report the uniqueID:
     // ------------------------------------------------------------
-    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -102,7 +102,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 	// I put the logging statement later after the superclass was
     // initialized so we will be able to report the uniqueID:
     // ------------------------------------------------------------
-    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -126,7 +126,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 		}
 	}
 
-    //NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - init Asset %@", self.uniqueID);
 	return self;
 }
 
@@ -136,7 +136,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (void)dealloc
 {
-    //NSLog(@"[ShareDestinationKit] INFO - dealloc Asset %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - dealloc Asset %@", self.uniqueID);
 	folderLocation = nil;
 	mediaExtension = nil;
 	descExtension = nil;
@@ -150,7 +150,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (NSURL*)folderLocation
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property folderLocation %@", self.uniqueID, folderLocation);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property folderLocation %@", self.uniqueID, folderLocation);
 	return folderLocation;
 }
 
@@ -159,7 +159,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (NSString *)mediaExtension
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property mediaExtension %@", self.uniqueID, mediaExtension);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property mediaExtension %@", self.uniqueID, mediaExtension);
 	return mediaExtension;
 }
 
@@ -168,7 +168,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (void)setMediaExtension:(NSString *)newMediaExtension
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property mediaExtension %@", self.uniqueID, newMediaExtension);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property mediaExtension %@", self.uniqueID, newMediaExtension);
     mediaExtension = newMediaExtension;
 }
 
@@ -177,7 +177,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (NSString *)descExtension
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property descExtension %@", self.uniqueID, descExtension);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property descExtension %@", self.uniqueID, descExtension);
 	return descExtension;
 }
 
@@ -186,7 +186,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (void)setDescExtension:(NSString *)newDescExtension
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property descExtension %@", self.uniqueID, newDescExtension);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ setting property descExtension %@", self.uniqueID, newDescExtension);
     descExtension = newDescExtension;
 }
 
@@ -195,7 +195,7 @@ const NSString* kMetadataKeyExpirationDate   = @"com.latenitefilms.ShareDestinat
 // ------------------------------------------------------------
 - (NSURL*)principalURL
 {
-    //NSLog(@"[ShareDestinationKit] INFO - Asset %@ property principalURL %@", self.uniqueID, principalURL);
+    NSLog(@"[ShareDestinationKit] INFO - Asset %@ property principalURL %@", self.uniqueID, principalURL);
 	return principalURL;
 }
 

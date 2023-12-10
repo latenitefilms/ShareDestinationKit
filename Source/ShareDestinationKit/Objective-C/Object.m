@@ -110,7 +110,7 @@
 	// I put the logging statement later after the initialization
     // so we can see the uniqueID:
     // ------------------------------------------------------------
-    //NSLog(@"[ShareDestinationKit] INFO - init Object %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - init Object %@", self.uniqueID);
 	return self;
 }
 
@@ -118,7 +118,7 @@
 // Add logging to dealloc:
 // ------------------------------------------------------------
 - (void) dealloc {
-    //NSLog(@"[ShareDestinationKit] INFO - dealloc Object %@", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - dealloc Object %@", self.uniqueID);
 }
 
 // ------------------------------------------------------------
@@ -179,7 +179,7 @@
     // ------------------------------------------------------------
 	theID = [NSString stringWithFormat:@"SSO-%d-%ld", gMyProcessID, gObjectCounter++];
     
-    //NSLog(@"[ShareDestinationKit] INFO - new unique id ='%@'", theID);
+    NSLog(@"[ShareDestinationKit] INFO - new unique id ='%@'", theID);
     
 	return theID;
 }
@@ -203,7 +203,7 @@
 // Container:
 // ------------------------------------------------------------
 - (id)container {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ as %@", self.uniqueID, container);
     return container;
 }
 
@@ -211,7 +211,7 @@
 // Container Property:
 // ------------------------------------------------------------
 - (NSString *)containerProperty {
-    //NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
+    NSLog(@"[ShareDestinationKit] INFO - return  %@ as '%@'", self.uniqueID, containerProperty);
     return containerProperty;
 }
 
@@ -219,7 +219,7 @@
 // Set Container:
 // ------------------------------------------------------------
 - (void)setContainer:(id)value andProperty:(NSString *)property {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to %@ and '%@'", self.uniqueID, [value class], property);
     if (container != value) {
 		container = value;
     }
@@ -240,7 +240,7 @@
 // Set Unique ID:
 // ------------------------------------------------------------
 - (void)setUniqueID:(NSString *)value {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (uniqueID != value) {
         uniqueID = [value copy];
     }
@@ -251,7 +251,7 @@
 // nothing out of the ordinary here:
 // ------------------------------------------------------------
 - (NSString *)name {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, name);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ as '%@'", self.uniqueID, name);
     return name;
 }
 
@@ -259,7 +259,7 @@
 // Set Name:
 // ------------------------------------------------------------
 - (void)setName:(NSString *)value {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ to '%@'", self.uniqueID, value);
     if (name != value) {
         name = [value copy];
     }
@@ -271,7 +271,7 @@
 // `setContainer:andProperty:` before you can call this method:
 // ------------------------------------------------------------
 - (NSScriptObjectSpecifier *)objectSpecifier {
-    //NSLog(@"[ShareDestinationKit] INFO - of %@ ", self.uniqueID);
+    NSLog(@"[ShareDestinationKit] INFO - of %@ ", self.uniqueID);
 	return [[NSUniqueIDSpecifier alloc]
 			initWithContainerClassDescription:(NSScriptClassDescription*)[self.container classDescription] containerSpecifier:[self.container objectSpecifier] key:self.containerProperty uniqueID:self.uniqueID];
 }
