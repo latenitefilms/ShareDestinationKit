@@ -10,12 +10,36 @@
 
 @implementation DocumentController
 
+// ------------------------------------------------------------
+// Read from URL:
+// ------------------------------------------------------------
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError {
+    
+    NSLog(@"[ShareDestinationKit] INFO - readFromURL triggered!");
+    return YES;
+}
+
+// ------------------------------------------------------------
+// Write to URL:
+// ------------------------------------------------------------
+- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError {
+    NSLog(@"[ShareDestinationKit] INFO - writeToURL triggered!");
+    return YES;
+}
+
+// ------------------------------------------------------------
+// Open Document with Contents of URL:
+// ------------------------------------------------------------
 - (void)openDocumentWithContentsOfURL:(NSURL *)url display:(BOOL)displayDocument completionHandler:(void (^)(NSDocument *document, BOOL documentWasAlreadyOpen, NSError *error))completionHandler
 {
     NSLog(@"[ShareDestinationKit] INFO - openDocumentWithContentsOfURL triggered!");
     
 	NSError *theErr = nil;
 	NSString *documentType = [self typeForContentsOfURL:url error:&theErr];
+    
+    if (theErr != nil) {
+        NSLog(@"[ShareDestinationKit] ERROR in openDocumentWithContentsOfURL: %@", theErr.localizedDescription);
+    }
     
 	if ( documentType == nil ) {
 		completionHandler(nil, NO, theErr);

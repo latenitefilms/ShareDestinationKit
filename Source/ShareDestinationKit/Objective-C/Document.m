@@ -72,7 +72,7 @@
     // ------------------------------------------------------------
     // The window controller for the document window:
     // ------------------------------------------------------------
-    //WindowController *primaryWindowController;
+    WindowController *primaryWindowController;
 }
 
 
@@ -410,8 +410,8 @@
     // ------------------------------------------------------------
     // Update the user interface:
     // ------------------------------------------------------------
-    //[primaryWindowController updateOutlineView:nil];
-    //[primaryWindowController updateSelectionDetailFields];
+    [primaryWindowController updateOutlineView:nil];
+    [primaryWindowController updateSelectionDetailFields];
 
     return assetIndex;
 }
@@ -579,6 +579,7 @@
 
 #pragma mark Load & Save Data Methods
 
+
 // ------------------------------------------------------------
 // Standard NSDocument load and save data methods:
 //
@@ -589,9 +590,14 @@
 //  - NSDocument Class Reference
 //  - Document-Based Applications Overview
 // ------------------------------------------------------------
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (NSData *)dataRepresentationOfType:(NSString *)aType
+#pragma GCC diagnostic pop
 {
-	// create an archive of the collection and its attributes
+    // ------------------------------------------------------------
+	// Create an archive of the collection and its attributes:
+    // ------------------------------------------------------------
     NSKeyedArchiver *archiver;
     NSMutableData *data = [NSMutableData data];
 	
@@ -607,11 +613,16 @@
 }
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)aType
+#pragma GCC diagnostic pop
 {
     NSKeyedUnarchiver *unarchiver;
 	
-	// extract an archive of the collection and its attributes
+    // ------------------------------------------------------------
+	// Extract an archive of the collection and its attributes:
+    // ------------------------------------------------------------
     unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
 	
     self.collectionName = [unarchiver decodeObjectForKey:@"name"];

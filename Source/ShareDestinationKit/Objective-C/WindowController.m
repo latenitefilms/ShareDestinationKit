@@ -27,7 +27,7 @@
 // ------------------------------------------------------------
 // The new asset sheet:
 // ------------------------------------------------------------
-@property IBOutlet NSWindow       *sheetForNewAsset;
+@property IBOutlet NSWindow              *sheetForNewAsset;
 @property (weak) IBOutlet NSTextField    *nameFieldForNewAsset;
 @property (weak) IBOutlet NSPopUpButton  *locationTypePopupForNewAsset;
 @property (weak) IBOutlet NSTextField    *locationFolderURLFieldForNewAsset;
@@ -50,8 +50,8 @@
 // ------------------------------------------------------------
 // The Wait Sheet:
 // ------------------------------------------------------------
-@property (weak) IBOutlet NSWindow              *FCPXWaitSheet;
-@property (weak) IBOutlet NSProgressIndicator	*FCPXWaitIndicator;
+//@property (weak) IBOutlet NSWindow              *FCPXWaitSheet;
+//@property (weak) IBOutlet NSProgressIndicator	*FCPXWaitIndicator;
 
 @end
 
@@ -60,31 +60,35 @@
 // ------------------------------------------------------------
 @implementation WindowController
 {
-    BOOL                    askUserNewAssetPath;
-    BOOL                    newAssetWantsDescription;
+    BOOL askUserNewAssetPath;
+    BOOL newAssetWantsDescription;
 }
 
+// ------------------------------------------------------------
+// Initialize:
+// ------------------------------------------------------------
 - (instancetype)init
 {
     self = [super initWithWindowNibName:@"Document"];
     if (self) {
         // ------------------------------------------------------------
-		// Add more initialization if any:
+		// Add more initialization if required here:
         // ------------------------------------------------------------
     }
-    
     return self;
 }
 
+// ------------------------------------------------------------
+// Initialize with Window:
+// ------------------------------------------------------------
 - (instancetype)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
         // ------------------------------------------------------------
-		// Add more initialization if any:
+		// Add more initialization if required here:
         // ------------------------------------------------------------
     }
-    
     return self;
 }
 
@@ -96,16 +100,16 @@
     [self updateSelectionDetailFields];
 }
 
-
 #pragma mark Managing Text Fields
 
 // ------------------------------------------------------------
 // Update the outline view:
 // ------------------------------------------------------------
-- (void)updateOutlineView:(id)sendor
+- (void)updateOutlineView:(id)sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - updateOutlineView triggered");
     [self.outlineView reloadData];
-    [self.outlineView deselectAll:sendor];
+    [self.outlineView deselectAll:sender];
 }
 
 // ------------------------------------------------------------
@@ -114,6 +118,7 @@
 // ------------------------------------------------------------
 - (void)clearDetailFields
 {
+    NSLog(@"[ShareDestinationKit] INFO - clearDetailFields triggered");
     [self.selectedAssetTitleField setStringValue:@"No selection"];
     [self.selectedAssetTitleField setSelectable:NO];
     [self.selectedAssetMediaURLField setStringValue:@"No selection"];
@@ -127,6 +132,7 @@
 // ------------------------------------------------------------
 - (void)setDetailFieldsWithName:(NSString*)name mediaURL:(NSURL*)mediaURL descURL:(NSURL*)descURL
 {
+    NSLog(@"[ShareDestinationKit] INFO - setDetailFieldsWithName triggered");
     NSString* URLString = nil;
     
     [self.selectedAssetTitleField setStringValue:name];
@@ -156,6 +162,7 @@
 // ------------------------------------------------------------
 - (void)updateSelectionDetailFields
 {
+    NSLog(@"[ShareDestinationKit] INFO - updateSelectionDetailFields triggered");
 	NSInteger selectedRow = [self.outlineView selectedRow];
 	if (selectedRow == -1)
 	{
@@ -182,6 +189,7 @@
 // ------------------------------------------------------------
 - (IBAction)newAsset:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - newAsset triggered");
     [self newAssetWithName:nil
                   metadata:nil
                dataOptions:nil
@@ -205,8 +213,13 @@
              dataOptions:(NSDictionary*)assetDataOptions
        completionHandler:(void (^)(Asset* newAsset))handler
 {
-    if ( assetName ==nil )
+    NSLog(@"[ShareDestinationKit] INFO - newAssetWithName triggered");
+    // ------------------------------------------------------------
+    // if assetName is empty, default to "Untitled":
+    // ------------------------------------------------------------
+    if ( assetName == nil ) {
         assetName = @"Untitled";
+    }
     
     // ------------------------------------------------------------
     // Bring up the custom sheet:
@@ -231,6 +244,9 @@
                         delegate:(id)modalDelegate
                   didEndSelector:(SEL)didEndSelector contextInfo:(void*)contextInfo
 {
+    
+    NSLog(@"[ShareDestinationKit] INFO - invokeNewAssetSheetNamed triggered");
+    
     Document* document = [self document];
 
     if ( !self.sheetForNewAsset ) {
@@ -246,11 +262,14 @@
     
 	NSWindow* docWindow = [self window];
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [NSApp beginSheet: self.sheetForNewAsset
 	   modalForWindow: docWindow
 		modalDelegate: modalDelegate
 	   didEndSelector: didEndSelector
 		  contextInfo: contextInfo];
+#pragma GCC diagnostic pop
 }
 
 // ------------------------------------------------------------
@@ -258,7 +277,11 @@
 // ------------------------------------------------------------
 - (IBAction)finishNewAssetSheet:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - finishNewAssetSheet triggered");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [NSApp endSheet:self.sheetForNewAsset returnCode:NSAlertDefaultReturn];
+#pragma GCC diagnostic pop
 }
 
 // ------------------------------------------------------------
@@ -266,7 +289,11 @@
 // ------------------------------------------------------------
 - (IBAction)cancelNewAssetSheet:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - cancelNewAssetSheet triggered");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [NSApp endSheet:self.sheetForNewAsset returnCode:NSAlertAlternateReturn];
+#pragma GCC diagnostic pop
 }
 
 // ------------------------------------------------------------
@@ -274,10 +301,15 @@
 // ------------------------------------------------------------
 - (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
+    NSLog(@"[ShareDestinationKit] INFO - didEndSheet triggered");
+    
     Asset*       newAsset = nil;
     Document*    document = [self document];
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	if ( returnCode == NSAlertDefaultReturn ) {
+#pragma GCC diagnostic pop
         NSDictionary    *newAssetLocationInfo = [self collectAssetLocation];
         NSUInteger      assetIndex = [document addAssetAtLocation:newAssetLocationInfo
                                                           content:NO
@@ -305,6 +337,8 @@
 // ------------------------------------------------------------
 - (IBAction)selectNewAssetFolder:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - selectNewAssetFolder triggered");
+    
 	NSInteger dirSelector = -1;
 	
 	switch ( [self.locationTypePopupForNewAsset indexOfSelectedItem] ) {
@@ -343,6 +377,7 @@
 // ------------------------------------------------------------
 - (NSDictionary*)collectAssetLocation
 {
+    NSLog(@"[ShareDestinationKit] INFO - collectAssetLocation triggered");
     return [NSDictionary dictionaryWithObjectsAndKeys:
             [NSURL URLWithString:[self.locationFolderURLFieldForNewAsset stringValue]], kMediaAssetLocationFolderKey,
             [self.nameFieldForNewAsset stringValue], kMediaAssetLocationBasenameKey,
@@ -356,6 +391,7 @@
 // ------------------------------------------------------------
 - (void)populateAssetLocation:(NSDictionary*)locationInfo
 {
+    NSLog(@"[ShareDestinationKit] INFO - populateAssetLocation triggered");
     NSURL       *folderURL = [locationInfo objectForKey:kMediaAssetLocationFolderKey];
     NSNumber    *wantsDescription = [locationInfo objectForKey:kMediaAssetLocationHasDescriptionKey];
     
@@ -373,6 +409,7 @@
 // ------------------------------------------------------------
 - (NSDictionary*)collectNewAssetMetadata
 {
+    NSLog(@"[ShareDestinationKit] INFO - collectNewAssetMetadata triggered");
 	NSMutableDictionary* metadataset = [NSMutableDictionary dictionaryWithCapacity:0];
 	
 	[metadataset setObject:[self.descriptionFieldForNewAsset stringValue] forKey:kFCPXMetadataKeyDescription];
@@ -390,6 +427,8 @@
 // ------------------------------------------------------------
 - (void)populateNewAssetMetadata:(NSDictionary*)metadataset
 {
+    NSLog(@"[ShareDestinationKit] INFO - populateNewAssetMetadata triggered");
+    
     NSString *description = [metadataset objectForKey:kFCPXMetadataKeyDescription];
     
     if ( description == nil )
@@ -423,6 +462,7 @@
 // ------------------------------------------------------------
 - (NSDictionary*)collectNewAssetDataOptions
 {
+    NSLog(@"[ShareDestinationKit] INFO - collectNewAssetDataOptions triggered");
     NSMutableDictionary*    dataOptions = [NSMutableDictionary dictionaryWithCapacity:0];
     
     NSString* theMetadataSetName = [self.metadataSetPopupForNewAsset titleOfSelectedItem];
@@ -438,6 +478,7 @@
 // ------------------------------------------------------------
 - (void)populateNewAssetDataOptions:(NSDictionary*)dataOptions
 {
+    NSLog(@"[ShareDestinationKit] INFO - populateNewAssetDataOptions triggered");
     NSArray* availableMetadataSets = [dataOptions objectForKey:kMediaAssetDataOptionAvailableMetadataSetsKey];
     
     if ( availableMetadataSets != nil && [availableMetadataSets isKindOfClass:[NSArray class]] ) {
@@ -471,7 +512,6 @@
     [self setNewAssetWantsDescription:[self.hasDecriptionCheckBoxForNewAsset state]];
 }
 
-
 #pragma mark Add/Remove Assets
 
 // ------------------------------------------------------------
@@ -479,13 +519,16 @@
 // ------------------------------------------------------------
 - (IBAction)addAsset:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - addAsset triggered");
+    
     Document* document = [self document];
     
     // ------------------------------------------------------------
 	// Bring up a open panel:
     // ------------------------------------------------------------
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-	
 	[openPanel setAllowedFileTypes:[NSArray arrayWithObjects:AVFileTypeQuickTimeMovie, AVFileTypeMPEG4, AVFileTypeAppleM4V, AVFileTypeAIFF, AVFileTypeWAVE, AVFileTypeAppleM4A, @"aiff", nil]];
 	[openPanel setAllowsMultipleSelection:YES];
 	[openPanel setMessage:@"Choose asset media file to add"];
@@ -507,6 +550,7 @@
 			[self updateSelectionDetailFields];
 		}
 	}];
+#pragma GCC diagnostic pop
 }
 
 // ------------------------------------------------------------
@@ -514,6 +558,8 @@
 // ------------------------------------------------------------
 - (IBAction)removeSelectedAssets:sender
 {
+    NSLog(@"[ShareDestinationKit] INFO - removeSelectedAssets triggered");
+    
     Document* document = [self document];
     
     // ------------------------------------------------------------

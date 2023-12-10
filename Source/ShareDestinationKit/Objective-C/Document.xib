@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SAMWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="WindowController">
             <connections>
                 <outlet property="outlineView" destination="100332" id="100347"/>
                 <outlet property="selectedAssetDescURLField" destination="100301" id="100329"/>
