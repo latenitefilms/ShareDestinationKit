@@ -12,28 +12,57 @@
 
 #import "FCPXMetadataKeys.h"
 #import "MediaAssetHelperKeys.h"
-//#import "WindowController.h"
+#import "WindowController.h"
 
+// ------------------------------------------------------------
+// Document:
+// ------------------------------------------------------------
 @implementation Document
 {
     // ------------------------------------------------------------
-	// Properties of the collection:
+    //
+	// PROPERTIES OF THE COLLECTION:
+    //
     // ------------------------------------------------------------
-	NSMutableArray *collection;             // Array of Asset
-	NSMutableDictionary *URLHash;           // Asset URL to index
-    NSMutableDictionary *UniqueIDHash;      // Asset UniqueID to index
+    
+    // ------------------------------------------------------------
+    // Array of Asset:
+    // ------------------------------------------------------------
+	NSMutableArray *collection;
+    
+    // ------------------------------------------------------------
+    // Asset URL to index:
+    // ------------------------------------------------------------
+	NSMutableDictionary *URLHash;
+    
+    // ------------------------------------------------------------
+    // Asset UniqueID to index:
+    // ------------------------------------------------------------
+    NSMutableDictionary *UniqueIDHash;
 
     // ------------------------------------------------------------
-	// Scripting bookkeeping:
+    //
+	// SCRIPTING BOOKKEEPING:
+    //
     // ------------------------------------------------------------
-	id container; /* reference to the object containing this object */
-	NSString* containerProperty; /* name of the cocoa key on container specifying the
-								  list property where this object is stored */
+    
+    // ------------------------------------------------------------
+    // Reference to the object containing this object:
+    // ------------------------------------------------------------
+	id container;
+    
+    // ------------------------------------------------------------
+    // Name of the cocoa key on container specifying the list
+    // property where this object is stored:
+    // ------------------------------------------------------------
+	NSString* containerProperty;
 	
     // ------------------------------------------------------------
-	// Storage for our id and name AppleScript properties:
+	// Storage for our id and name AppleScript properties.
+    //
+    // A unique id value for this object:
     // ------------------------------------------------------------
-	NSString* uniqueID; /* a unique id value for this object */
+	NSString* uniqueID;
 	
     // ------------------------------------------------------------
     // Default location for new asset:
@@ -92,8 +121,8 @@
 // ------------------------------------------------------------
 - (void)makeWindowControllers
 {
-    //primaryWindowController = [[WindowController alloc] init];
-    //[self addWindowController:primaryWindowController];
+    primaryWindowController = [[WindowController alloc] init];
+    [self addWindowController:primaryWindowController];
 }
 
 @synthesize collectionName;
@@ -102,7 +131,7 @@
 
 @synthesize defaultAssetLocation;
 
-//@synthesize primaryWindowController;
+@synthesize primaryWindowController;
 
 #pragma mark Scripting Support Methods
 
@@ -302,8 +331,8 @@
     // ------------------------------------------------------------
     // Update the User Interface:
     // ------------------------------------------------------------
-    //[primaryWindowController updateOutlineView:nil];
-    //[primaryWindowController updateSelectionDetailFields];
+    [primaryWindowController updateOutlineView:nil];
+    [primaryWindowController updateSelectionDetailFields];
     
     return assetIndex;
 }
@@ -332,7 +361,9 @@
                         nil];
     }
     else {
-        // register with basename only
+        // ------------------------------------------------------------
+        // Register with basename only:
+        // ------------------------------------------------------------
         locationInfo = [NSDictionary dictionaryWithObjectsAndKeys:folderURL, kMediaAssetLocationFolderKey, baseName, kMediaAssetLocationBasenameKey, nil];
     }
     

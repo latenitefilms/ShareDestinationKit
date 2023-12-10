@@ -33,9 +33,8 @@
     NSDictionary* properties = [theArguments objectForKey:@"KeyDictionary"];
     
     if ( classParameter == nil ) {
-        NSLog(@"[ShareDestinationKit] INFO - No object class specified");
+        NSLog(@"[ShareDestinationKit] INFO - No object class specified, so aborting!");
         [self setScriptErrorNumber:errAEParamMissed];
-        
         return nil;
     }
     
@@ -43,22 +42,26 @@
     
     if ( [[NSScriptClassDescription classDescriptionForClass:[Asset class]] matchesAppleEventCode:classCode] ) {
         
+        NSLog(@"[ShareDestinationKit] INFO - classes match");
+        
         DocumentController *docController = [DocumentController sharedDocumentController];
         Document *currentDocument = [docController currentDocument];
         
         if ( currentDocument == nil ) {
             NSArray *documents = [docController documents];
-            
-            if ( [documents count] > 0 )
+            if ( [documents count] > 0 ) {
                 // ------------------------------------------------------------
                 // Pick up the first document if current document is nil:
                 // ------------------------------------------------------------
                 currentDocument = [documents objectAtIndex:0];
-            else
+                NSLog(@"[ShareDestinationKit] INFO - Picking the first document...");
+            } else {
                 // ------------------------------------------------------------
                 // Create an untitled document:
                 // ------------------------------------------------------------
                 currentDocument = [docController openUntitledDocumentAndDisplay:YES error:nil];
+                NSLog(@"[ShareDestinationKit] INFO - Creating a new document...");
+            }
         }
         
         // ------------------------------------------------------------
@@ -69,9 +72,15 @@
         id dataOptionsParameter = nil;
         
         if ( properties != nil ) {
+            NSLog(@"[ShareDestinationKit] INFO - properties aren't nil");
+                  
             nameParameter = [properties objectForKey:@"name"];
             metadataParameter = [properties objectForKey:@"metadata"];
             dataOptionsParameter = [properties objectForKey:@"dataOptions"];
+            
+            NSLog(@"[ShareDestinationKit] INFO - nameParameter: %@", nameParameter);
+            NSLog(@"[ShareDestinationKit] INFO - metadataParameter: %@", metadataParameter);
+            NSLog(@"[ShareDestinationKit] INFO - dataOptionsParameter: %@", dataOptionsParameter);
         }
         
         // ------------------------------------------------------------
@@ -80,36 +89,50 @@
         // ------------------------------------------------------------
         NSUInteger interactionLevel = [self appleEventUserInteractionLevel];
         
-        if ( interactionLevel == kAECanInteract ||
-            interactionLevel == kAEAlwaysInteract ||
-            interactionLevel == kAECanSwitchLayer ) {
-            //SAMWindowController *currentWindowController = currentDocument.primaryWindowController;
+        if ( interactionLevel == kAECanInteract ||interactionLevel == kAEAlwaysInteract || interactionLevel == kAECanSwitchLayer ) {
+            
+            NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're allowed to interact with the user!");
+            
+            // ------------------------------------------------------------
+            // If we wanted to, we could implement our window controller
+            // here:
+            // ------------------------------------------------------------
+            WindowController *currentWindowController = currentDocument.primaryWindowController;
             
             // ------------------------------------------------------------
             // Suspend the script execution and invoke the user interface:
             // ------------------------------------------------------------
             [self suspendExecution];
             
-            /*
+            // ------------------------------------------------------------
+            // If we wanted to, we could show our user interface here:
+            // ------------------------------------------------------------
             [currentWindowController newAssetWithName:nameParameter
                                              metadata:metadataParameter
                                           dataOptions:dataOptionsParameter
-                                    completionHandler:^(SAMAsset *newAsset) {
+                                    completionHandler:^(Asset *newAsset) {
                 if ( newAsset != nil ) {
                     NSScriptObjectSpecifier *theSpec = [newAsset objectSpecifier];
                     
-                    // resume the execution with the result
+                    // ------------------------------------------------------------
+                    // Resume the execution with the result:
+                    // ------------------------------------------------------------
                     [self resumeExecutionWithResult:theSpec];
-                }
-                else {
-                    // indicate that the user has canceled the operation and resume script execution
+                } else {
+                    // ------------------------------------------------------------
+                    // Indicate that the user has canceled the operation and 
+                    // resume script execution:
+                    // ------------------------------------------------------------
                     [self setScriptErrorNumber:userCanceledErr];
                     [self resumeExecutionWithResult:nil];
                 }
             }];
-             */
-        }
-        else {
+            
+            
+        } else {
+            
+            NSLog(@"[ShareDestinationKit] INFO - Apple Script says we're NOT allowed to interact with the user");
+            
             // ------------------------------------------------------------
             // Create a new asset at a default location if user
             // interaction is not allowed:
@@ -129,8 +152,8 @@
         // Invoke the standard implementation by the super class:
         // ------------------------------------------------------------
         result = [super performDefaultImplementation];
+        NSLog(@"[ShareDestinationKit] INFO - Invoke the standard implementation by the super class");
     }
-    
     return result;
 }
 
@@ -139,6 +162,7 @@
 // ------------------------------------------------------------
 - (NSUInteger)appleEventUserInteractionLevel
 {
+    NSLog(@"[ShareDestinationKit] INFO - appleEventUserInteractionLevel triggered");
     NSAppleEventManager     *aem = [NSAppleEventManager sharedAppleEventManager];
     NSAppleEventDescriptor  *currentEvent = [aem currentAppleEvent];
     NSAppleEventDescriptor  *interactionLevel = [currentEvent attributeDescriptorForKeyword:keyInteractLevelAttr];

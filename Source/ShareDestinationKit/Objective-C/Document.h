@@ -10,11 +10,11 @@
 #import <Cocoa/Cocoa.h>
 #import "Object.h"
 #import "Asset.h"
-//#import "WindowController.h"
+#import "WindowController.h"
 
 @interface Document : NSDocument
 
-//@property (readonly) WindowController*    primaryWindowController;
+@property (readonly) WindowController*    primaryWindowController;
 
 // ------------------------------------------------------------
 // Properties:

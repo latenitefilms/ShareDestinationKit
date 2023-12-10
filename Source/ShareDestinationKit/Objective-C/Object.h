@@ -12,7 +12,6 @@
 #define OBJECT_SPECIFIER_TYPE_NAME          0
 #define OBJECT_SPECIFIER_TYPE_INDEX         1
 #define OBJECT_SPECIFIER_TYPE_UNIQUE_ID     2
-#define OBJECT_SPECIFIER_TYPE               OBJECT_SPECIFIER_TYPE_UNIQUE_ID
 
 /* The Object class is the root class for all of the AppleScript
  objects we provide in our application.

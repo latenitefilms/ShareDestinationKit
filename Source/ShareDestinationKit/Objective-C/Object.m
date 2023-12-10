@@ -179,13 +179,8 @@
  you can call this method. */
 - (NSScriptObjectSpecifier *)objectSpecifier {
     NSLog(@"[ShareDestinationKit] INFO - of %@ ", self.uniqueID);
-#if OBJECT_SPECIFIER_TYPE == OBJECT_SPECIFIER_TYPE_NAME
-	return [[NSNameSpecifier alloc]
-			initWithContainerClassDescription:(NSScriptClassDescription*)[self.container classDescription] containerSpecifier:[self.container objectSpecifier] key:self.containerProperty name:self.name];
-#elif OBJECT_SPECIFIER_TYPE == OBJECT_SPECIFIER_TYPE_UNIQUE_ID
 	return [[NSUniqueIDSpecifier alloc]
 			initWithContainerClassDescription:(NSScriptClassDescription*)[self.container classDescription] containerSpecifier:[self.container objectSpecifier] key:self.containerProperty uniqueID:self.uniqueID];
-#endif
 }
 
 

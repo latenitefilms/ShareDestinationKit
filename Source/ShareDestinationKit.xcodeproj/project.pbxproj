@@ -15,6 +15,10 @@
 		22BF9A652B25CCD700431809 /* FCPXMetadataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A642B25CCD700431809 /* FCPXMetadataKeys.m */; };
 		22BF9A682B25CD3A00431809 /* MediaAssetHelperKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A672B25CD3A00431809 /* MediaAssetHelperKeys.m */; };
 		22BF9A6B2B25DB9500431809 /* MakeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A6A2B25DB9500431809 /* MakeCommand.m */; };
+		22BF9A6F2B25E61400431809 /* NewAssetSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BF9A6D2B25E61400431809 /* NewAssetSheet.xib */; };
+		22BF9A702B25E61400431809 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BF9A6E2B25E61400431809 /* Document.xib */; };
+		22BF9A732B25E63400431809 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A712B25E63400431809 /* WindowController.m */; };
+		22BF9A762B25E9CE00431809 /* OutlineViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BF9A742B25E9CE00431809 /* OutlineViewDataSource.m */; };
 		22E843FA2B25B3E800E55584 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E843F82B25B3E800E55584 /* ApplicationDelegate.m */; };
 		22E843FE2B25B45100E55584 /* ScriptingSupportCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E843FD2B25B45100E55584 /* ScriptingSupportCategories.m */; };
 		22E844012B25C29900E55584 /* DocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E844002B25C29900E55584 /* DocumentController.m */; };
@@ -38,6 +42,12 @@
 		22BF9A672B25CD3A00431809 /* MediaAssetHelperKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaAssetHelperKeys.m; path = "Objective-C/MediaAssetHelperKeys.m"; sourceTree = "<group>"; };
 		22BF9A692B25DB9500431809 /* MakeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MakeCommand.h; path = "Objective-C/MakeCommand.h"; sourceTree = "<group>"; };
 		22BF9A6A2B25DB9500431809 /* MakeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MakeCommand.m; path = "Objective-C/MakeCommand.m"; sourceTree = "<group>"; };
+		22BF9A6D2B25E61400431809 /* NewAssetSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewAssetSheet.xib; path = "Objective-C/NewAssetSheet.xib"; sourceTree = "<group>"; };
+		22BF9A6E2B25E61400431809 /* Document.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Document.xib; path = "Objective-C/Document.xib"; sourceTree = "<group>"; };
+		22BF9A712B25E63400431809 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowController.m; path = "Objective-C/WindowController.m"; sourceTree = "<group>"; };
+		22BF9A722B25E63400431809 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowController.h; path = "Objective-C/WindowController.h"; sourceTree = "<group>"; };
+		22BF9A742B25E9CE00431809 /* OutlineViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewDataSource.m; path = "Objective-C/OutlineViewDataSource.m"; sourceTree = "<group>"; };
+		22BF9A752B25E9CE00431809 /* OutlineViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewDataSource.h; path = "Objective-C/OutlineViewDataSource.h"; sourceTree = "<group>"; };
 		22E843F72B25B3E700E55584 /* ShareDestinationKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareDestinationKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		22E843F82B25B3E800E55584 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationDelegate.m; path = "Objective-C/ApplicationDelegate.m"; sourceTree = "<group>"; };
 		22E843F92B25B3E800E55584 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = "Objective-C/ApplicationDelegate.h"; sourceTree = "<group>"; };
@@ -116,9 +126,23 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		22BF9A6C2B25E5B000431809 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				22BF9A722B25E63400431809 /* WindowController.h */,
+				22BF9A712B25E63400431809 /* WindowController.m */,
+				22BF9A752B25E9CE00431809 /* OutlineViewDataSource.h */,
+				22BF9A742B25E9CE00431809 /* OutlineViewDataSource.m */,
+				22BF9A6E2B25E61400431809 /* Document.xib */,
+				22BF9A6D2B25E61400431809 /* NewAssetSheet.xib */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
 		22E843FB2B25B40200E55584 /* Objective-C Code */ = {
 			isa = PBXGroup;
 			children = (
+				22BF9A6C2B25E5B000431809 /* User Interface */,
 				22E844082B25C3DB00E55584 /* Scripting */,
 				22E8440B2B25C41900E55584 /* Document Controller */,
 				22E8440A2B25C40A00E55584 /* Application Delegate */,
@@ -234,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				220057F42B25094E00B69E8A /* OSAScriptingDefinition.sdef in Resources */,
+				22BF9A6F2B25E61400431809 /* NewAssetSheet.xib in Resources */,
 				220057EB2B2506AE00B69E8A /* Preview Assets.xcassets in Resources */,
+				22BF9A702B25E61400431809 /* Document.xib in Resources */,
 				220057E82B2506AE00B69E8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +279,8 @@
 				22BF9A652B25CCD700431809 /* FCPXMetadataKeys.m in Sources */,
 				22E844012B25C29900E55584 /* DocumentController.m in Sources */,
 				22BF9A682B25CD3A00431809 /* MediaAssetHelperKeys.m in Sources */,
+				22BF9A732B25E63400431809 /* WindowController.m in Sources */,
+				22BF9A762B25E9CE00431809 /* OutlineViewDataSource.m in Sources */,
 				22E844042B25C2F100E55584 /* Document.m in Sources */,
 				22E843FA2B25B3E800E55584 /* ApplicationDelegate.m in Sources */,
 				226F91972B25CABE00E0920D /* Object.m in Sources */,
