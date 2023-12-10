@@ -16,10 +16,65 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>sam</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string></string>
+			<key>CFBundleTypeName</key>
+			<string>Asset Collection</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>????</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>NSDocumentClass</key>
+			<string>Document</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>mov</string>
+				<string>mp4</string>
+				<string>m4v</string>
+				<string>aiff</string>
+				<string>wav</string>
+				<string>m4a</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string></string>
+			<key>CFBundleTypeName</key>
+			<string>Asset Media File</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>????</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>NSDocumentClass</key>
+			<string>Document</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>fcpxml</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Asset Description File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>NSDocumentClass</key>
+			<string>Document</string>
+		</dict>
 	</array>
 	<key>OSAScriptingDefinition</key>
 	<string>OSAScriptingDefinition.sdef</string>
 	<key>com.apple.proapps.MediaAssetProtocol</key>
 	<dict></dict>
+
+
 </dict>
 </plist>
