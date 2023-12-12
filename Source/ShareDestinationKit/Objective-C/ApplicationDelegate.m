@@ -13,9 +13,18 @@
 @implementation ApplicationDelegate
 
 // ------------------------------------------------------------
+// Application Did Finish Launching:
+// ------------------------------------------------------------
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    NSLog(@"[ShareDestinationKit] INFO - applicationDidFinishLaunching triggered!");
+    [NSApp setDelegate:self];
+}
+
+// ------------------------------------------------------------
 // Application should quit after last window closed:
 // ------------------------------------------------------------
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    NSLog(@"[ShareDestinationKit] INFO - applicationShouldTerminateAfterLastWindowClosed triggered!");
     return YES;
 }
 

@@ -553,6 +553,7 @@
     // ------------------------------------------------------------
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
     
+    /*
     if (@available(macOS 11.0, *)) {
         openPanel.allowedContentTypes = @[
             [UTType typeWithIdentifier:@"public.movie"], // Equivalent to AVFileTypeQuickTimeMovie
@@ -569,7 +570,10 @@
         // Fallback for macOS versions prior to 11.0
         [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:@"mov", @"mp4", @"m4v", @"aiff", @"wav", @"m4a", @"aiff", nil]];
     }
-
+    */
+    
+    [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:AVFileTypeQuickTimeMovie, AVFileTypeMPEG4, AVFileTypeAppleM4V, AVFileTypeAIFF, AVFileTypeWAVE, AVFileTypeAppleM4A, @"aiff", nil]];
+    
 	[openPanel setAllowsMultipleSelection:YES];
 	[openPanel setMessage:@"Choose asset media file to add"];
 	[openPanel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result){
