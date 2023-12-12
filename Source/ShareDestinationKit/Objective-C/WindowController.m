@@ -5,6 +5,8 @@
 //  Created by Chris Hocking on 10/12/2023.
 //
 
+@import UniformTypeIdentifiers;
+
 #import "WindowController.h"
 
 #import "Asset.h"
@@ -194,7 +196,7 @@
                  // ------------------------------------------------------------
                  // Update the user interface:
                  // ------------------------------------------------------------
-                 NSLog(@"[ShareDestinationKit] INFO - Update the user interface...");
+                 NSLog(@"[ShareDestinationKit] INFO - Update the user interface with a new nil asset: %@", newAsset);
                  [self updateOutlineView:nil];
                  [self updateSelectionDetailFields];
              }
@@ -550,7 +552,24 @@
 	// Bring up a open panel:
     // ------------------------------------------------------------
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:[NSArray arrayWithObjects:AVFileTypeQuickTimeMovie, AVFileTypeMPEG4, AVFileTypeAppleM4V, AVFileTypeAIFF, AVFileTypeWAVE, AVFileTypeAppleM4A, @"aiff", nil]];
+    
+    if (@available(macOS 11.0, *)) {
+        openPanel.allowedContentTypes = @[
+            [UTType typeWithIdentifier:@"public.movie"], // Equivalent to AVFileTypeQuickTimeMovie
+            [UTType typeWithIdentifier:@"public.mpeg-4"], // Equivalent to AVFileTypeMPEG4
+            // Note: For 'AVFileTypeAppleM4V', use a general video UTI or a specific one if available
+            [UTType typeWithIdentifier:@"public.m4v"], // Assuming 'public.m4v' for AVFileTypeAppleM4V
+            [UTType typeWithIdentifier:@"public.aiff-audio"], // Equivalent to AVFileTypeAIFF
+            [UTType typeWithIdentifier:@"public.wav"], // Equivalent to AVFileTypeWAVE
+            // Note: For 'AVFileTypeAppleM4A', use a general audio UTI or a specific one if available
+            [UTType typeWithIdentifier:@"public.m4a-audio"], // Assuming 'public.m4a-audio' for AVFileTypeAppleM4A
+            [UTType typeWithIdentifier:@"public.aiff-audio"] // 'aiff' repeated
+        ];
+    } else {
+        // Fallback for macOS versions prior to 11.0
+        [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:@"mov", @"mp4", @"m4v", @"aiff", @"wav", @"m4a", @"aiff", nil]];
+    }
+
 	[openPanel setAllowsMultipleSelection:YES];
 	[openPanel setMessage:@"Choose asset media file to add"];
 	[openPanel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result){

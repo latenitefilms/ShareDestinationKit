@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,6 @@
                 <outlet property="locationTypePopupForNewAsset" destination="25" id="436"/>
                 <outlet property="metadataSetPopupForNewAsset" destination="244" id="439"/>
                 <outlet property="nameFieldForNewAsset" destination="9" id="430"/>
-                <outlet property="newAssetSheet" destination="1" id="85"/>
                 <outlet property="shareIDFieldForNewAsset" destination="394" id="437"/>
                 <outlet property="sheetForNewAsset" destination="1" id="440"/>
             </connections>

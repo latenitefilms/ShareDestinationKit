@@ -22,18 +22,6 @@ struct ShareDestinationKitApp: App {
     }
 }
 
-class ApplicationDelegate: NSObject, NSApplicationDelegate {
-    var windowController: WindowController?
-
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        // Instantiate the window controller from the XIB
-        windowController = WindowController()
-
-        // Show the window
-        windowController?.showWindow(self)
-    }
-}
-
 struct AppIconView: View {
     var body: some View {
         Image(nsImage: NSImage(named: "AppIcon")!)
@@ -66,6 +54,18 @@ struct LaunchFCPButton: View {
     }
 }
 
+struct OpenMetadataView: View {
+    var body: some View {
+        Button("Open Metadata View") {
+            NSLog("[ShareDestinationKit] applicationDidFinishLaunching - so creating a new document...")
+            let documentController = NSDocumentController.shared
+            documentController.newDocument(self)
+        }
+        .padding(.top)
+    }
+}
+
+
 struct ContentView: View {
     var body: some View {
         HStack {
@@ -74,7 +74,10 @@ struct ContentView: View {
             Spacer()
             VStack(alignment: .leading) {
                 MainTextView()
-                LaunchFCPButton()
+                HStack {
+                    OpenMetadataView()
+                    LaunchFCPButton()
+                }
             }.padding()
         }
         .preferredColorScheme(.dark)
