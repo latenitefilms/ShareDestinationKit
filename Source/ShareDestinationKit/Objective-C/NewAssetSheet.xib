@@ -7,17 +7,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WindowController">
             <connections>
-                <outlet property="descriptionFieldForNewAsset" destination="48" id="431"/>
-                <outlet property="episodeIDFieldForNewAsset" destination="109" id="432"/>
-                <outlet property="episodeNumberFieldForNewAsset" destination="117" id="433"/>
-                <outlet property="expirationDatePickerForNewAsset" destination="63" id="434"/>
-                <outlet property="hasDecriptionCheckBoxForNewAsset" destination="305" id="438"/>
-                <outlet property="locationFolderURLFieldForNewAsset" destination="277" id="435"/>
-                <outlet property="locationTypePopupForNewAsset" destination="25" id="436"/>
-                <outlet property="metadataSetPopupForNewAsset" destination="244" id="439"/>
-                <outlet property="nameFieldForNewAsset" destination="9" id="430"/>
-                <outlet property="shareIDFieldForNewAsset" destination="394" id="437"/>
-                <outlet property="sheetForNewAsset" destination="1" id="440"/>
+                <outlet property="descriptionFieldForNewAsset" destination="48" id="TBS-4S-SdT"/>
+                <outlet property="episodeIDFieldForNewAsset" destination="109" id="V3e-AQ-CbZ"/>
+                <outlet property="episodeNumberFieldForNewAsset" destination="117" id="boa-VU-v6p"/>
+                <outlet property="expirationDatePickerForNewAsset" destination="63" id="ySi-bb-04s"/>
+                <outlet property="hasDescriptionCheckBoxForNewAsset" destination="305" id="nMU-Um-LAT"/>
+                <outlet property="locationFolderURLFieldForNewAsset" destination="277" id="iKw-I1-FkY"/>
+                <outlet property="locationTypePopupForNewAsset" destination="25" id="bSn-cu-Y7m"/>
+                <outlet property="metadataSetPopupForNewAsset" destination="244" id="3Dq-Tj-g5D"/>
+                <outlet property="nameFieldForNewAsset" destination="9" id="oHb-Qe-n6W"/>
+                <outlet property="shareIDFieldForNewAsset" destination="394" id="cH7-fX-L9y"/>
+                <outlet property="sheetForNewAsset" destination="1" id="Rh6-rs-OY7"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>

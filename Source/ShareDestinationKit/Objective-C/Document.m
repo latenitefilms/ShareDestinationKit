@@ -92,6 +92,10 @@
         UniqueIDHash    = [NSMutableDictionary dictionaryWithCapacity:0];
 		collectionName  = [self displayName];
 		uniqueID        = [Object calculateNewUniqueID];
+        
+        NSLog(@"[ShareDestinationKit] INFO - collectionName: %@", collectionName);
+        NSLog(@"[ShareDestinationKit] INFO - uniqueID: %@", uniqueID);
+        
     }
     return self;
 }

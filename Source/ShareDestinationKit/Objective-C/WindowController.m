@@ -47,7 +47,7 @@
 // Data Options Pane:
 // ------------------------------------------------------------
 @property (weak) IBOutlet NSPopUpButton  *metadataSetPopupForNewAsset;
-@property (weak) IBOutlet NSButton       *hasDecriptionCheckBoxForNewAsset;
+@property (weak) IBOutlet NSButton       *hasDescriptionCheckBoxForNewAsset;
 
 @end
 
@@ -161,14 +161,13 @@
 {
     NSLog(@"[ShareDestinationKit] INFO - updateSelectionDetailFields triggered");
 	NSInteger selectedRow = [self.outlineView selectedRow];
-	if (selectedRow == -1)
-	{
+    
+    NSLog(@"[ShareDestinationKit] INFO - selectedRow: %ld", (long)selectedRow);
+    
+	if (selectedRow == -1) {
         [self clearDetailFields];
-	}
-	else
-	{
+	} else {
 		id selectedItem = [self.outlineView itemAtRow:selectedRow]; // [self.assets objectAtIndex:selectedRow];
-        
         if ( selectedItem != nil ) {
             if ( [selectedItem isMemberOfClass:[Asset class]] ) {
                 Asset* selectedAsset = (Asset*)selectedItem;
@@ -221,6 +220,7 @@
     // if assetName is empty, default to "Untitled":
     // ------------------------------------------------------------
     if ( assetName == nil ) {
+        NSLog(@"[ShareDestinationKit] INFO - assetName is empty, default to 'Untitled'");
         assetName = @"Untitled";
     }
     
@@ -534,7 +534,7 @@
 // ------------------------------------------------------------
 - (IBAction)updateNewAssetWantsDescription:(id)sender
 {
-    [self setNewAssetWantsDescription:[self.hasDecriptionCheckBoxForNewAsset state]];
+    [self setNewAssetWantsDescription:[self.hasDescriptionCheckBoxForNewAsset state]];
 }
 
 #pragma mark Add/Remove Assets

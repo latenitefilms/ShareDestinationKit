@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WindowController">
             <connections>
-                <outlet property="outlineView" destination="100332" id="100347"/>
-                <outlet property="selectedAssetDescURLField" destination="100301" id="100329"/>
-                <outlet property="selectedAssetMediaURLField" destination="100141" id="100328"/>
-                <outlet property="selectedAssetTitleField" destination="100131" id="100153"/>
+                <outlet property="outlineView" destination="100332" id="WMN-dk-hR9"/>
+                <outlet property="selectedAssetDescURLField" destination="100301" id="jyG-3H-dgt"/>
+                <outlet property="selectedAssetMediaURLField" destination="100141" id="7vV-Jt-8Aw"/>
+                <outlet property="selectedAssetTitleField" destination="100131" id="R9C-76-IlG"/>
                 <outlet property="window" destination="5" id="18"/>
             </connections>
         </customObject>

@@ -17,12 +17,17 @@
 // ------------------------------------------------------------
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
+    NSLog(@"[ShareDestinationKit] INFO - outlineView numberOfChildrenOfItem triggered");
+    
     Document* document = [self document];
     
-    if ( item == nil )
+    NSLog(@"[ShareDestinationKit] INFO - document: %@", document);
+    
+    if ( item == nil ) {
         return [document.collection count];
-    else
+    } else {
         return 0;
+    }
 }
 
 // ------------------------------------------------------------
@@ -30,12 +35,17 @@
 // ------------------------------------------------------------
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
-    Document*    document = [self document];
+    NSLog(@"[ShareDestinationKit] INFO - outlineView child ofItem triggered");
+    
+    Document* document = [self document];
+    
+    NSLog(@"[ShareDestinationKit] INFO - document: %@", document);
 
-    if ( item == nil )
+    if ( item == nil ) {
         return [document.collection objectAtIndex:index];
-    else
+    } else {
         return nil;
+    }
 }
 
 // ------------------------------------------------------------
@@ -43,10 +53,13 @@
 // ------------------------------------------------------------
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
 {
-    if ( item == nil )
+    NSLog(@"[ShareDestinationKit] INFO - outlineView isItemExpandable triggered");
+    
+    if ( item == nil ) {
         return YES;
-    else
+    } else {
         return NO;
+    }
 }
 
 // ------------------------------------------------------------
@@ -54,15 +67,18 @@
 // ------------------------------------------------------------
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item;
 {
-    if ( item == nil )
+    NSLog(@"[ShareDestinationKit] INFO - outlineView objectValueForTableColumn triggered");
+    
+    if ( item == nil ) {
         return nil;
-    else {
+    } else {
         NSString *columnKey = [tableColumn identifier];
         
-        if ( columnKey != nil )
+        if ( columnKey != nil ) {
             return 	[item valueForKey:columnKey];
-        else
+        } else {
             return nil;
+        }
     }
 }
 // ------------------------------------------------------------
@@ -70,7 +86,7 @@
 // ------------------------------------------------------------
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-
+    NSLog(@"[ShareDestinationKit] INFO - outlineView setObjectValue forTableColumn triggered");
 }
 
 // ------------------------------------------------------------
@@ -78,8 +94,9 @@
 // ------------------------------------------------------------
 - (NSIndexSet *)outlineView:(NSOutlineView *)theOutlineView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes
 {
-    NSMutableIndexSet   *theNewSelectionIndexes = [[NSMutableIndexSet alloc] initWithIndexSet:proposedSelectionIndexes];
-
+    NSLog(@"[ShareDestinationKit] INFO - outlineView selectionIndexesForProposedSelection triggered");
+    
+    NSMutableIndexSet *theNewSelectionIndexes = [[NSMutableIndexSet alloc] initWithIndexSet:proposedSelectionIndexes];
     return theNewSelectionIndexes;
 }
 
@@ -90,6 +107,7 @@
 // ------------------------------------------------------------
 - (void)outlineViewSelectionDidChange:(NSNotification *)aNotification
 {
+    NSLog(@"[ShareDestinationKit] INFO - outlineViewSelectionDidChange triggered");
 	[self updateSelectionDetailFields];
 }
 

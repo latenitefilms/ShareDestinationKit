@@ -54,10 +54,10 @@ struct LaunchFCPButton: View {
     }
 }
 
-struct OpenMetadataView: View {
+struct NewCollection: View {
     var body: some View {
-        Button("Open Metadata View") {
-            NSLog("[ShareDestinationKit] applicationDidFinishLaunching - so creating a new document...")
+        Button("New Collection") {
+            NSLog("[ShareDestinationKit] Opening a New Collection...")
             let documentController = NSDocumentController.shared
             documentController.newDocument(self)
         }
@@ -75,7 +75,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 MainTextView()
                 HStack {
-                    OpenMetadataView()
+                    NewCollection()
                     LaunchFCPButton()
                 }
             }.padding()
