@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+
+<!--
+    File: OSAScriptingDefinition.sdef
+Abstract: Asset Management suite scripting terminology definitions for the SimpleAssetManager sample code.
+    
+ Version: 1.0
+
+Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
+Inc. ("Apple") in consideration of your agreement to the following
+terms, and your use, installation, modification or redistribution of
+this Apple software constitutes acceptance of these terms.  If you do
+not agree with these terms, please do not use, install, modify or
+redistribute this Apple software.
+
+In consideration of your agreement to abide by the following terms, and
+subject to these terms, Apple grants you a personal, non-exclusive
+license, under Apple's copyrights in this original Apple software (the
+"Apple Software"), to use, reproduce, modify and redistribute the Apple
+Software, with or without modifications, in source and/or binary forms;
+provided that if you redistribute the Apple Software in its entirety and
+without modifications, you must retain this notice and the following
+text and disclaimers in all such redistributions of the Apple Software.
+Neither the name, trademarks, service marks or logos of Apple Inc. may
+be used to endorse or promote products derived from the Apple Software
+without specific prior written permission from Apple.  Except as
+expressly stated in this notice, no other rights or licenses, express or
+implied, are granted by Apple herein, including but not limited to any
+patent rights that may be infringed by your derivative works or by other
+works in which the Apple Software may be incorporated.
+
+The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
+MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
+THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+
+IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+Copyright (C) 2013 Apple Inc. All Rights Reserved.
+
+-->
+
+	<!-- declare the namespace for using XInclude so we can include the standard suite -->
+<dictionary xmlns:xi="http://www.w3.org/2003/XInclude">
+
+
+		<!-- use XInclude to include the standard suite -->
+	<xi:include href="file:///System/Library/ScriptingDefinitions/CocoaStandard.sdef" xpointer="xpointer(/dictionary/suite)"/>
+
+
+		<!-- specific suite(s) for the application follow... -->
+	<suite name="ProVideo Asset Management" code="pvam" description="Scripting terminology for Pro Video Asset Management applications.">
+
+		<record-type name="asset location" code="aslc"> 
+            <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			<property name="folder" code="asfd" type="file" description="Directory in which the asset files exist.">
+				<cocoa key="folder"/>
+			</property>
+			<property name="base name" code="asbn" type="text" description="Base file name of the asset files.">
+				<cocoa key="basename"/>
+			</property>
+			<property name="has media" code="ashm" type="boolean" description="Whether the asset has rendered media">
+				<cocoa key="hasMedia"/>
+			</property>
+			<property name="has description" code="ashd" type="boolean" description="Whether the asset has an XML sescription">
+				<cocoa key="hasDescription"/>
+			</property>
+		</record-type>
+
+		<value-type name="user defined record" code="usrf">
+            <cocoa class="NSDictionary"/>
+        </value-type>
+        
+        <command name="open" code="aevtodoc" description="Open a document.">
+            <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			<direct-parameter description="The file(s) to be opened.">
+				<type type="file"/>
+				<type type="file" list="yes"/>
+			</direct-parameter>
+			<result description="The opened document(s).">
+				<type type="document"/>
+				<type type="document" list="yes"/>
+			</result>
+		</command>
+
+		<command name="make" code="corecrel" description="Create a new object.">
+            <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			<cocoa class="SAMMakeCommand"/>
+			<parameter name="new" code="kocl" type="type" description="The class of the new object.">
+				<cocoa key="ObjectClass"/>
+			</parameter>
+			<parameter name="at" code="insh" type="location specifier" optional="yes" description="The location at which to insert the object.">
+				<cocoa key="Location"/>
+			</parameter>
+			<parameter name="with data" code="data" type="any" optional="yes" description="The initial contents of the object.">
+				<cocoa key="ObjectData"/>
+			</parameter>
+			<parameter name="with properties" code="prdt" type="record" optional="yes" description="The initial values for properties of the object.">
+				<cocoa key="KeyDictionary"/>
+			</parameter>
+			<result type="specifier" description="The new object."/>
+		</command>
+
+		<class-extension name="application" extends="application">
+            <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			<cocoa class="NSApplication"/>
+			<property name="name" code="pnam" type="text" access="r" description="The name of the application.">
+                <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+            </property>
+			<element type="document">
+                <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			</element>
+		</class-extension>
+		
+		<class name="document" code="docu" description="A document." inherits="document">
+            <access-group identifier="com.apple.proapps.assetmanagement.import" access="rw"/>
+			<cocoa class="SAMDocument"/>
+			<property name="name" code="pnam" type="text" access="r" description="The name of the application.">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+            </property>
+            <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the asset">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+            </property>
+			<element type="asset">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="assets"/>
+			</element>
+		</class>
+				
+		<class name="asset" code="aset" description="A media asset.">
+            <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+			<cocoa class="SAMAsset"/>
+			<property name="id" code="ID  " type="text" access="r" description="The unique identifier of the asset">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="uniqueID"/>
+			</property>
+			<property name="name" code="pnam" type="text" access="r" description="Its name.">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="name"/>
+			</property>
+			<property name="location info" code="locn" type="asset location" access="r" description="Location information of the asset.">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="locationInfo"/>
+			</property>
+			<property name="metadata" code="meta" type="user defined record" access="rw" description="Metadata associated to the asset.">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="metadata"/>
+			</property>
+			<property name="data options" code="dopt" type="user defined record" access="rw" description="Data creation options for the asset.">
+                <access-group identifier="com.apple.assetmanagement.import" access="rw"/>
+				<cocoa key="dataOptions"/>
+			</property>
+		</class>
+
+	</suite>
+
+</dictionary>
